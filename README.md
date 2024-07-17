@@ -1,2 +1,2 @@
-# whitesnake-airlines-frontend
+# Yatramitra-frontend
 Travel ticket site frontend
