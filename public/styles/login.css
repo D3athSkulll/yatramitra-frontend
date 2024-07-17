@@ -1,0 +1,100 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.login-form {
+    flex: 1;    
+    height: 100vh;
+    padding: 50px;
+    background-color: white;
+}
+.illustration {
+    flex: 1;
+    background-color: #1e3a8a;
+    
+    align-items: flex-end;
+    justify-content: center;
+}
+.illustration img {
+    height: 100vh;
+    width: 50;
+}
+.logo {
+    max-width: 150px;
+    margin-bottom: 30px;
+}
+h1 {
+    font-size: 2.4rem;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    width: max-content;
+    font-size: 1.6rem;
+    padding: 10px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.forgot-password {
+
+    text-align: right;
+    margin-top: 30px;
+}
+.signup {
+    margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .login-form,
+    .illustration {
+        flex: none;
+        height: auto;
+        padding: 20px;
+    }
+
+    .illustration img {
+        max-width: 80%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
