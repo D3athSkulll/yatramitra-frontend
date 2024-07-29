@@ -42,7 +42,7 @@
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" id="regName" placeholder="Enter your name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your name" pattern="[A-Za-z]+" title="Only letters are allowed" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
@@ -50,12 +50,16 @@
               </div>
               <div class="input-box">
                 <i class="fas fa-sort-numeric-down"></i>
-                <input type="text" id="regNumber" placeholder="Enter your number" required>
+                <input type="number" id="regNumber" placeholder="Enter your number" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password" id="regPass" placeholder="Enter your password" required>
+              </div><div>
+              <div class="progress">
+                <div id="password-strength-bar" class="progress-bar"></div>
               </div>
+            </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password" id="confirmPass" placeholder="Re-enter your password" required>
