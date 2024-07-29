@@ -19,6 +19,15 @@ body {
   align-items: center; /* Center vertically */
   
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
 .container{
   position: relative;
   max-width: 850px;
@@ -216,6 +225,25 @@ body {
 }
 .container #flip{
   display: none;
+}
+.progress {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 10px;
+  margin-top: 5px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: red;
+  transition: width 0.3s;
+}
+
+.input-box {
+  position: relative;
 }
 @media (max-width: 730px) {
   .container .cover{
