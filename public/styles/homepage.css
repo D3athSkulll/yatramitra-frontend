@@ -130,7 +130,7 @@ header {
     font-size: 0.8em;
 }
 
-button {
+.booking-form button {
     background-color: orange;
     color: white;
     padding: 1em 2em;

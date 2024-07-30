@@ -238,6 +238,15 @@ body.dark .search-field i{
     color: var(--text-color);
 }
 
+
+.loginButton {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor:pointer;
+
+}
+
 @media (max-width: 790px) {
     nav .nav-bar .sidebarOpen{
         display: block;

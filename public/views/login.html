@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
-   <script src="./scripts/login.js"></script>
 <body>
   <div class="container">
     <input type="checkbox" id="flip">
@@ -19,11 +18,11 @@
         <div class="form-content">
           <div class="login-form">
             <div class="title">Login</div>
-          <form action="/login" method="POST">
+          <form id="loginForm">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="email" id= "loginEmail" placeholder="Enter your email" required>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
@@ -39,30 +38,34 @@
       </div>
         <div class="signup-form">
           <div class="title">Register</div>
-        <form action="/register" method="POST">
+        <form id="registerForm">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" id="regName" placeholder="Enter your name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your name" pattern="[A-Za-z]+" title="Only letters are allowed" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" id="regEmail" placeholder="Enter your email" required>
+                <input type="email" id="regEmail" placeholder="Enter your email" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-sort-numeric-down"></i>
-                <input type="text" id="regNumber" placeholder="Enter your number" required>
+                <input type="number" id="regNumber" placeholder="Enter your number" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" id = "regPass" placeholder="Enter your password" required>
+                <input type="password" id="regPass" placeholder="Enter your password" required>
+              </div><div>
+              <div class="progress">
+                <div id="password-strength-bar" class="progress-bar"></div>
               </div>
+            </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password" id="confirmPass" placeholder="Re-enter your password" required>
               </div>
               <div class="button input-box">
-                <input type="submit" id = "registerButton" value="Register">
+                <input type="submit" id="registerButton" value="Register">
               </div>
               <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
             </div>
@@ -71,6 +74,7 @@
     </div>
     </div>
   </div>
-  <script href="../scripts/login.js"></script>
+  <script src="../scripts/login.js">
+  </script>
 </body>
 </html>
