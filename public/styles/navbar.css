@@ -246,6 +246,10 @@ body.dark .search-field i{
     cursor:pointer;
 
 }
+.loginButton a::before{
+    text-decoration: underline;
+    text-decoration-color: #010718;
+}
 
 @media (max-width: 790px) {
     nav .nav-bar .sidebarOpen{
