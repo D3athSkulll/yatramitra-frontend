@@ -101,15 +101,15 @@ nav .nav-bar .logo a{
 .nav-links li a::before{
     content: '';
     position: absolute;
-    left: 50%;
+    left: 0%;
     bottom: 0;
     transform: translateX(-50%);
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
+    height: 3px;
+    width: 50px;
+    border-radius: 10px;
     background-color: var(--text-color);
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 .nav-links li:hover a::before{
@@ -137,7 +137,7 @@ nav .nav-bar .logo a{
     color: var(--text-color);
     font-size: 22px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 1s ease;
 }
 
 .dark-light i.sun{
