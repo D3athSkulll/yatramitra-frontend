@@ -24,20 +24,60 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* Use min-height or max-height if height doesn't work */
+    min-height: 50vh; /* Example min-height, adjust as needed */
+    max-height: 70vh; /* Example max-height, adjust as needed */
+    overflow: hidden; /* Hide overflow to ensure height constraints */
+    transition: min-height 0.4s ease, max-height 0.4s ease;
+
+}
+.hero-section .hero-title {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+}
+
+.hero-section .hero-text {
+    font-size: 1.7rem;
+    margin-bottom: 50%;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+}
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 40vh; /* Reduce min-height for medium-sized screens */
+        max-height: 60vh; /* Reduce max-height for medium-sized screens */
+    }
+    .hero-section .hero-title {
+        font-size: 1.9rem;
+        margin-bottom: 20px;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+    }
     
+    .hero-section .hero-text {
+        font-size: 1.2rem;
+        margin-bottom: 50%;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+    }
 }
 
-.hero-section h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+@media (max-width: 480px) {
+    .hero-section {
+        min-height: 30vh; /* Further reduce min-height for smaller screens */
+        max-height: 50vh; /* Further reduce max-height for smaller screens */
+    }
+    .hero-section .hero-title {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+    }
+    
+    .hero-section .hero-text {
+        font-size: 0.6rem;
+        margin-bottom: 50%;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+    }
 }
 
-.hero-section p {
-    font-size: 24px;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
 
 
 
@@ -58,16 +98,15 @@ header {
    
 }
 
-.form-outer{
-    
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+.form-outer {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 2em;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    display: flexbox;
+    display: flex; 
     flex-direction: column;
     align-items: center;
 }
