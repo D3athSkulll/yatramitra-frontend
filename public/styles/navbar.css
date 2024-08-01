@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     transition: all 0.4s ease;;
 }
-
+ */
 
 
 :root{
@@ -89,33 +89,36 @@ nav .nav-bar .logo a{
     list-style: none;
 }
 
-.nav-links li a{
+.nav-links li a {
     position: relative;
-    font-size: 17px;
-    font-weight: 400;
+    display: inline-block; /* Ensure the link itself wraps around the text */
     color: var(--text-color);
     text-decoration: none;
     padding: 10px;
 }
 
-.nav-links li a::before{
+.nav-links li a span {
+    position: relative;
+    display: inline-block; /* Ensure the span fits the text width */
+}
+
+.nav-links li a span::after {
     content: '';
     position: absolute;
-    left: 0%;
-    bottom: 0;
-    transform: translateX(-50%);
-    height: 3px;
-    width: 50px;
-    border-radius: 10px;
+    width: 100%; /* Make the underline match the width of the text */
+    height: 2px;
     background-color: var(--text-color);
-    opacity: 0;
-    transition: all 0.5s ease;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
 }
 
-.nav-links li:hover a::before{
-    opacity: 1;
+.nav-links li a:hover span::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
-
 .nav-bar .darkLight-searchBox{
     display: flex;
     align-items: center;
