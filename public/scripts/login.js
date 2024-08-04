@@ -1,65 +1,4 @@
-const apiUrl = "/"
-document.getElementById('loginForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPass').value;
 
-    try {
-      const response = await fetch(apiUrl+'auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // Redirect to the desired page after successful login
-        window.location.href = 'auth/protected'; // Change this to your desired route
-      } else {
-        const errorData = await response.json();
-        alert(errorData.message); // Display error message
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  });
-
-  document.getElementById('registerForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('regEmail').value;
-    const number = document.getElementById('regNumber').value;
-    const password = document.getElementById('regPass').value;
-    const confirmPassword = document.getElementById('confirmPass').value;
-
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
-
-    try {
-      const response = await fetch(apiUrl+'auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name, email, number, password })
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        // Redirect to the desired page after successful registration // Change this to your desired route
-      } else {
-        const errorData = await response.json();
-        alert(errorData.message); // Display error message
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  });
 
 document.getElementById('regPass').addEventListener('keyup', function (event) {
   var input = event.target;
@@ -138,7 +77,7 @@ document.getElementById('regPass').addEventListener('keyup', function (event) {
 });
 document.getElementById('name').addEventListener('keyup', function (event) {
   var input = event.target;
-  var pattern = /^[A-Za-z]+$/;
+  var pattern = /^[A-Za-z\s ]+$/;
   var isValid = pattern.test(input.value);
 
   if (!isValid) {
@@ -147,3 +86,69 @@ document.getElementById('name').addEventListener('keyup', function (event) {
       input.setCustomValidity('');
   }
 });
+const apiUrl = "http://localhost:3000/"
+document.getElementById('loginForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPass').value;
+
+    try {
+      const response = await fetch(apiUrl+'auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem('token', data.token); // Store the token in the browser
+        // Redirect to the desired page after successful login
+        window.location.href = './homepage.html'; // Change this to your desired route
+      } else {
+        const errorData = await response.json();
+        alert(errorData.message); // Display error message
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('regEmail').value;
+    const number = document.getElementById('regNumber').value;
+    const password = document.getElementById('regPass').value;
+    const confirmPassword = document.getElementById('confirmPass').value;
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    try {
+      const response = await fetch(apiUrl+'auth/register', {
+        method: 'POST',
+        headers: {  
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, number, password })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        localStorage.setToken('token', data.token); // Store the token in the browser
+        window.location.href = '/protected'; // Change this to your desired route
+        // Redirect to the desired page after successful registration // Change this to your desired route
+      } else {
+        const errorData = await response.json();
+        alert(errorData.message); // Display error message
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });

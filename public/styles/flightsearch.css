@@ -20,6 +20,43 @@ body {
 .search-info {
     font-size: 14px;
 }
+/* Basic styling for suggestions container */
+.suggestions {
+    position: absolute;
+    display: none; /* Hide the suggestions container by default */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    top: 100%; /* Position it just below the input field */
+    left: 0;
+}
+
+/* Styling for each suggestion item */
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Hover effect for suggestion items */
+.suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Highlighting the selected suggestion */
+.suggestions .selected {
+    background-color: #e0e0e0;
+}
+
+/* Ensure the suggestions container is not overlapped by other elements */
+.search-field {
+    position: relative;
+}
+
 .modify-search {
     background-color: #3366cc;
     color: white;
