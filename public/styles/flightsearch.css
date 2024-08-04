@@ -80,14 +80,28 @@ body {
     font-size: 24px;
     margin-right: 10px;
 }
-.main-content {
+.main-content-first{
     max-width: 900px;
     margin: 20px auto;
+    margin-top:160px;
     background-color: #1e1e1e;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     color: white;
+}
+.main-content{
+    max-width: 900px;
+    margin: 20px auto;
+    /* margin-top:60px; */
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: white;
+}
+.flight{
+    margin-top:160px;
 }
 .flight-info {
     display: flex;
