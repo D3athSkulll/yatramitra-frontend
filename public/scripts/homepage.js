@@ -1,36 +1,42 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const flightButton = document.getElementById("flight-button");
-    const trainButton = document.getElementById("train-button");
-    const busButton = document.getElementById("bus-button");
+document.addEventListener('DOMContentLoaded', () => {
+    const btnForm1 = document.getElementById('flight-button');
+    const btnForm2 = document.getElementById('train-button');
+    const btnForm3 = document.getElementById('bus-button');
+    const form1 = document.getElementById('flight-form');
+    const form2 = document.getElementById('train-form');
+    const form3 = document.getElementById('bus-form');
+    const forms = [form1, form2,form3];
 
-    const flightForm = document.getElementById("flight-form");
-    const trainForm = document.getElementById("train-form");
-    const busForm = document.getElementById("bus-form");
+    let currentFormIndex = 0;
+    let isAnimating = false;
 
-    // Adjust the form size based on the number of fields
-    const forms = [flightForm, trainForm, busForm];
+    btnForm1.addEventListener('click', () => switchForm(0));
+    btnForm2.addEventListener('click', () => switchForm(1));
+    btnForm3.addEventListener('click', () => switchForm(2));
 
-    function showForm(formToShow) {
-        forms.forEach(form => {
-            if (form === formToShow) {
-                form.classList.add("active");
-                form.classList.remove("less-content"); // Ensure the class is removed if it was applied before
-            } else {
-                form.classList.remove("active");
-                form.classList.add("less-content"); // Apply the class to forms that are hidden
-            }
-        });
+    function switchForm(targetIndex) {
+        if (isAnimating || targetIndex === currentFormIndex) return;
+
+        isAnimating = true;
+        const outgoingForm = forms[currentFormIndex];
+        const incomingForm = forms[targetIndex];
+        
+        const direction = targetIndex > currentFormIndex ? 1 : -1;
+
+        incomingForm.classList.remove('hidden');
+        incomingForm.style.transform = `rotateY(${direction * 180}deg)`;
+        setTimeout(() => {
+            outgoingForm.style.transform = `rotateY(${direction * -180}deg)`;
+            incomingForm.style.transform = `rotateY(0deg)`;
+
+            setTimeout(() => {
+                outgoingForm.classList.add('hidden');
+                outgoingForm.style.transform = '';
+                currentFormIndex = targetIndex;
+                isAnimating = false;
+            }, 600);
+        }, 20);
     }
 
-    flightButton.addEventListener("click", function() {
-        showForm(flightForm);
-    });
-
-    trainButton.addEventListener("click", function() {
-        showForm(trainForm);
-    });
-
-    busButton.addEventListener("click", function() {
-        showForm(busForm);
-    });
+    switchForm(0);
 });

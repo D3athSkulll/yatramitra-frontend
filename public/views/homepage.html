@@ -48,11 +48,12 @@
                 <button class="button-79" role="button" id="train-button">Train</button>
                 <button class="button-79" role="button" id="bus-button">Bus</button>
             </div>
-            <div id="flight-form" class="form-container active">
+            <div class="form-container">
                 <div class="form-outer">
+                <div class="form" id="flight-form">
                     <div class="form-top">
                         <div>
-                            <label for="flight-one-way-trip">One Way</label>
+                            <label for="flight-round-trip">One Way</label>
                             <input type="radio" name="flight-trip" id="flight-one-way-trip" checked>
                         </div>
                         <div>
@@ -85,75 +86,83 @@
                                 <input type="text" name="arrival-date" id="flight-arrival-date" value="SELECT ROUND TRIP" disabled>
                             </div>
                         </div>
-                        <button type="submit">Search Journey</button>
+                        <button type="submit" id="flight-buttonSubmit">Search Journey</button>
                     </div>
                 </div>
-            </div>
-            <div id="train-form" class="form-container">
-                <div class="form-outer">
+                <div class="form hidden" id="train-form" >
                     <div class="booking-form">
                         <div class="form-section">
-                            <label for="train-from">Departure</label>
+                            <label for="flight-from">Departure</label>
                             <div class="input-container">
                                 <input type="text" id="train-from" name="from" placeholder="Departure Station">
                             </div>
                         </div>
                         <div class="form-section">
-                            <label for="train-to">Arrival</label>
+                            <label for="flight-to">Arrival</label>
                             <div class="input-container">
                                 <input type="text" id="train-to" name="to" placeholder="Arrival Station">
                             </div>
                         </div>
                         <div class="form-section">
-                            <label for="train-departure-date">Departure Date</label>
+                            <label for="flight-departure-date">Departure Date</label>
                             <div class="input-container">
                                 <input type="date" id="train-departure-date" name="departure-date">
                             </div>
                         </div>
-                        <button type="submit">Search Journey</button>
+                        <div class="form-section" id="flight-arrival-div">
+                            <label for="class-selection">Class Selection</label>
+                            <div class="input-container">
+                                <select name="class-selection" id="class-selection">
+                                    <option value="1AC">1AC</option>
+                                    <option value="2AC">2AC</option>
+                                    <option value="3AC">3AC</option>
+                                    <option value="sleeper">SLEEPER</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" id="train-buttonSubmit">Search Journey</button>
                     </div>
                 </div>
-            </div>
-            <div id="bus-form" class="form-container">
-                <div class="form-outer">
+                <div class="form hidden" id="bus-form" >
                     <div class="form-top">
                         <div>
-                            <label for="bus-one-way-trip">One Way</label>
-                            <input type="radio" name="bus-trip" id="bus-one-way-trip" checked>
+                            <label for="flight-one-way-trip">One Way</label>
+                            <input type="radio" name="flight-trip" id="bus-one-way-trip" checked>
                         </div>
                         <div>
-                            <label for="bus-round-trip">Round Trip</label>
-                            <input type="radio" name="bus-trip" id="bus-round-trip">
+                            <label for="flight-round-trip">Round Trip</label>
+                            <input type="radio" name="flight-trip" id="bus-round-trip">
                         </div>
                     </div>
                     <div class="booking-form">
                         <div class="form-section">
-                            <label for="bus-from">From</label>
+                            <label for="flight-from">Departure</label>
                             <div class="input-container">
-                                <input type="text" id="bus-from" name="from" placeholder="Starting point">
+                                <input type="text" id="bus-from" name="from" placeholder="Departure City">
                             </div>
                         </div>
                         <div class="form-section">
-                            <label for="bus-to">To</label>
+                            <label for="flight-to">Arrival</label>
                             <div class="input-container">
-                                <input type="text" id="bus-to" name="to" placeholder="Ending point">
+                                <input type="text" id="bus-to" name="to" placeholder="Arrival City">
                             </div>
                         </div>
                         <div class="form-section">
-                            <label for="bus-departure-date">Departure Date</label>
+                            <label for="flight-departure-date">Departure Date</label>
                             <div class="input-container">
                                 <input type="date" id="bus-departure-date" name="departure-date">
                             </div>
                         </div>
-                        <div class="form-section" id="bus-arrival-div">
-                            <label for="bus-arrival-date">Arrival Date</label>
+                        <div class="form-section" id="flight-arrival-div">
+                            <label for="flight-arrival-date">Arrival Date</label>
                             <div class="input-container">
                                 <input type="text" name="arrival-date" id="bus-arrival-date" value="SELECT ROUND TRIP" disabled>
                             </div>
                         </div>
-                        <button type="submit">Search Journey</button>
+                        <button type="submit" id="bus-buttonSubmit">Search Journey</button>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </main>

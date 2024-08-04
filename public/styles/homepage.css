@@ -161,9 +161,8 @@ header {
    
 }
 .form-container {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    perspective: 1000px;
+
 }
 .form-container.active {
     display: block;
@@ -175,7 +174,11 @@ header {
     justify-content: center;
     margin-bottom: 20px;
 }
+.form{
+    transition: transform 0.6s ease-in-out;
+    backface-visibility: hidden;
 
+}
 .form-outer {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -188,7 +191,9 @@ header {
     flex-direction: column;
     align-items: center;
 }
-
+.hidden {
+    display: none;
+  }
 .form-top{
     display: flex;
     justify-content: center;
@@ -226,7 +231,7 @@ header {
 }
 
 .input-container input[type="text"],
-.input-container input[type="date"] {
+.input-container input[type="date"], .input-container select {
     width: 150px;
     padding: 0.5em;
     border: 1px solid #ccc;
@@ -265,6 +270,7 @@ header {
     margin-top: 0px;
     
 }
+
 @media (max-width: 767px) {
     .form-outer {
         width: 90%;

@@ -126,7 +126,7 @@ document.getElementById('searchForm').addEventListener('submit', async (event) =
     const departureDate = document.getElementById('depart-date').value;
     const adults = 1;
     try {
-      const response = await fetch('api/flight/search', {
+      const response = await fetch(apiUrl+'api/flight/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
