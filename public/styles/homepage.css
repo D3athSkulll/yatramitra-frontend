@@ -81,7 +81,7 @@ header {
 
 
 /*Button*/
-.button-79 {
+.transport-button {
     backface-visibility: hidden;
     margin-left:5px;
     margin-bottom: 15px;
@@ -108,24 +108,24 @@ header {
     touch-action: manipulation;
   }
   
-  .button-79:disabled {
+  .transport-button:disabled {
     color: #787878;
     cursor: auto;
   }
   
-  .button-79:not(:disabled):hover {
+  .transport-button:not(:disabled):hover {
     transform: scale(1.05);
   }
   
-  .button-79:not(:disabled):hover:active {
+  .transport-button:not(:disabled):hover:active {
     transform: scale(1.05) translateY(.125rem);
   }
   
-  .button-79:focus {
+  .transport-button:focus {
     outline: 0 solid transparent;
   }
   
-  .button-79:focus:before {
+  .transport-button:focus:before {
     border-width: .125rem;
     content: "";
     left: calc(-1*.375rem);
@@ -136,11 +136,11 @@ header {
     user-select: none;
   }
   
-  .button-79:focus:not(:focus-visible) {
+  .transport-button:focus:not(:focus-visible) {
     outline: 0 solid transparent;
   }
   
-  .button-79:not(:disabled):active {
+  .transport-button:not(:disabled):active {
     transform: translateY(.125rem);
   }
 

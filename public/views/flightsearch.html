@@ -53,8 +53,8 @@
               <div class="search-field">
                 <label for="trip-type">Trip</label>
                 <select id="trip-type">
-                  <option>Round Trip</option>
                   <option>One Way</option>
+                  <option>Round Trip</option>
                 </select>
               </div>
               <div class="search-field">
@@ -79,7 +79,11 @@
               </div>
               <div class="search-field date-field">
                 <label for="return-date">Return Date</label>
-                <input type="date" id="return-date" value="" />
+                <input type="text" id="return-date" value="SELECT ROUND TRIP" disabled />
+              </div>
+              <div class="search-field adults-count" id="adults-count">
+                <label for="passenger">Passengers</label>
+                <input type="number" id="adults" value="1" min="1" max="10" />
               </div>
               <button class="modify-button" type="submit">Modify Search</button>
             </div>
@@ -87,11 +91,30 @@
         </div>
       </nav>
     </header>
-    <div class="flight" id = "flight-results">
+    <div class="loader-wrapper" id = "loader-wrapper">
+      <video id = "loader" autoplay loop muted>
+        <source src="../assets/loader.webm" type="video/webm">
+        </video>
+    </div>
+    <div class="flight" id="departure-body" >
+      <div class="departure-flight-text">
+        <h2><span>Select Departure Flight</span></h2>
+      </div>
+      <div id="departure-results">
 
+      </div>
       <!---  sss-->
     </div>
-    <!-- <div id="flight-results"></div> -->
+    <div class="flight hidden"  id="arrival-body">
+      <div class="arrival-flight-text">
+        <h2><span>Select Return Flight</span></h2>
+      </div>
+      <div id="arrival-results">
+        
+      </div>
+    </div>
+    <!-- Button goBack onclick="goBack()" -->
+    <!-- Select Arrival Flight -->
     <script src="../scripts/flightsearch.js"></script>
   </body>
 </html>

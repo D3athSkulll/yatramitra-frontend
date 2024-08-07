@@ -39,4 +39,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     switchForm(0);
-});
+    var roundtripButton = document.querySelector("#flight-round-trip");
+
+    roundtripButton.addEventListener("click", ()=>{
+
+        document.querySelector("#flight-arrival-date").disabled = false;
+        document.querySelector("#flight-arrival-date").type="date";
+
+    });
+
+    var onewaytripButton = document.querySelector("#flight-one-way-trip");
+    onewaytripButton.checked = true;
+    onewaytripButton.addEventListener("click", ()=>{
+
+    document.querySelector("#flight-arrival-date").disabled = true;
+    document.querySelector("#flight-arrival-date").type="text";
+    document.querySelector("#flight-arrival-date").value = "SELECT ROUND TRIP";
+
+    });
+    });
+
