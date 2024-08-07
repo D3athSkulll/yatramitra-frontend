@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndiGo Booking</title>
+    <link rel="stylesheet" href="../styles/ht.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IndiGo</h1>
+            <a href="#">Back to Search Results</a>
+        </header>
+        <main>
+            <div class="form-section">
+                <h2>Enter passenger details</h2>
+                <form id="passenger-form">
+                    <div class="form-group" id="passenger-details">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Details</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" placeholder="Primary contact number">
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="submit-button">Next</button>
+                    </div>
+                </form>
+            </div>
+            <aside class="trip-summary" id = "trip-summary">
+            </aside>
+        </main>
+    </div>
+    <script src="../scripts/ht.js"></script>
+</body>
+</html>

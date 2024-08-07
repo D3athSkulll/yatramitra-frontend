@@ -225,12 +225,15 @@ function  displayDepartureFlights(data, oneWay = true){
             const flightDetails = event.target;
             const flight = flightDetails.parentElement;
             const flightInfo = flight.querySelector('.flight-details');
-            const flightPrice = flightInfo.querySelector('.flight-price').textContent;
+            var flightPrice = flightInfo.querySelector('.flight-price').textContent;
             const flightTimes = flightInfo.querySelector('.flight-times').querySelector('span').textContent;
             const flightDuration = flightInfo.querySelector('.flight-duration').querySelector('span').textContent;
-            const flightType = flightInfo.querySelector('.flight-type').textContent;
-            const flightAirline = flightInfo.querySelector('.flight-times').querySelector('span').textContent;
-           console.log(flightPrice, flightTimes, flightDuration);
+            const flightAirline = flightInfo.querySelector('.flight-times').querySelectorAll('span')[1].textContent;
+            flightPrice = flightPrice.replace(/[^\d]/g, '');
+            localStorage.setItem('departure-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline, origin: data.origin,
+                                                                       destination: data.destination, adults:data.adults, date: data.departureDate }));
+            localStorage.setItem('arrival-flight', null);
+            window.location.href = './passenger-details.html';
           }
         })
       }
@@ -244,8 +247,10 @@ function  displayDepartureFlights(data, oneWay = true){
             const flightTimes = flightInfo.querySelector('.flight-times').querySelector('span').textContent;
             const flightDuration = flightInfo.querySelector('.flight-duration').querySelector('span').textContent;
             const flightAirline = flightInfo.querySelector('.flight-times').querySelectorAll('span')[1].textContent;
-            flightPrice  = flightPrice.replace(/[^\d]/g, '')
-            localStorage.setItem('departure-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline }));
+            flightPrice = flightPrice.replace(/[^\d]/g, '')
+
+            localStorage.setItem('departure-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline ,origin: data.origin, 
+                                                                      destination: data.destination, adults:data.adults, date: data.departureDate}));
             document.getElementById('arrival-body').style.display = 'block';
             document.getElementById('arrival-body').classList.remove('hidden');
             document.getElementById('departure-body').style.display = 'none';
@@ -322,9 +327,10 @@ function displayArrivalFlights(data){
       const flightDuration = flightInfo.querySelector('.flight-duration').querySelector('span').textContent;
       const flightAirline = flightInfo.querySelector('.flight-times').querySelectorAll('span')[1].textContent;
       flightPrice = flightPrice.replace(/[^\d]/g, '')
-
-     console.log("Departure Flight: ",flightPrice, flightTimes, flightDuration, flightAirline);
-     console.log("Arrival Flight: ",JSON.parse(localStorage.getItem('departure-flight')));
+      localStorage.setItem('arrival-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline,
+                                                            date: data.arrivalDate
+       }));
+      window.location.href = './passenger-details.html';
     }
   })
 }
