@@ -34,6 +34,10 @@ document.getElementById('oldForm').addEventListener('submit', (event) => {
 */
 const token = localStorage.getItem('token');
 document.addEventListener('DOMContentLoaded', () => {
+  const dateInput = document.getElementById("depart-date");
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById('return-date').setAttribute("min", today);
+    dateInput.setAttribute("min", today);
     const formData = JSON.parse(localStorage.getItem('formData'));
     if (formData) {
         document.getElementById('from').value = formData.origin;
@@ -45,6 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('searchForm').submit();
     }
 });
+document.getElementById('depart-date').addEventListener('change', (event) => {
+  document.getElementById('return-date').setAttribute("min", document.getElementById('depart-date').value);
+})
 const selectElement = document.getElementById('trip-type');
 selectElement.addEventListener('change', (event) => {
     const value = event.target.value;

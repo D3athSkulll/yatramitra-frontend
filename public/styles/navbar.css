@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    transition: all 0.4s ease;;
-}
- */
-
-
 :root{
     --body-color: #E4E9F7;
     --nav-color: #0d0d0d;
@@ -44,7 +34,6 @@ nav{
 
 body.dark nav{
     border: 1px solid #393838;
-
 }
 
 nav .nav-bar{
@@ -91,7 +80,7 @@ nav .nav-bar .logo a{
 
 .nav-links li a {
     position: relative;
-    display: inline-block; /* Ensure the link itself wraps around the text */
+    display: inline-block;
     color: var(--text-color);
     text-decoration: none;
     padding: 10px;
@@ -99,13 +88,13 @@ nav .nav-bar .logo a{
 
 .nav-links li a span {
     position: relative;
-    display: inline-block; /* Ensure the span fits the text width */
+    display: inline-block;
 }
 
 .nav-links li a span::after {
     content: '';
     position: absolute;
-    width: 100%; /* Make the underline match the width of the text */
+    width: 100%;
     height: 2px;
     background-color: var(--text-color);
     bottom: 0;
@@ -119,6 +108,7 @@ nav .nav-bar .logo a{
     transform: scaleX(1);
     transform-origin: left;
 }
+
 .nav-bar .darkLight-searchBox{
     display: flex;
     align-items: center;
@@ -212,19 +202,6 @@ nav .nav-bar .logo a{
     z-index: -1;
 }
 
-/* .search-field input{
-    height: 100%;
-    width: 100%;
-    padding: 0 45px 0 15px;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--search-text);
-    background-color: var(--search-bar);
-} */
-
 body.dark .search-field input{
     color: var(--text-color);
 }
@@ -241,18 +218,112 @@ body.dark .search-field i{
     color: var(--text-color);
 }
 
-
+/* Login Button Styles */
+/* Login Button Styles */
 .loginButton {
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    cursor:pointer;
+    background-color: var(--nav-color); /* Match navbar background color */
+    color: var(--text-color); /* Match text color from the navbar */
+    border: 2px solid var(--text-color); /* Add border to make it stand out */
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline if it's a link */
+}
 
+.loginButton:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter on hover */
+    border-color: rgba(255, 255, 255, 0.7); /* Subtle border color change on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect on hover */
 }
-.loginButton a::before{
-    text-decoration: underline;
-    text-decoration-color: #010718;
+
+.loginButton:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on click */
+    border-color: rgba(255, 255, 255, 0.9); /* Border color on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
+
+/* Styling for link if the button is an anchor tag */
+.loginButton a {
+    color: inherit; /* Use the color of the button */
+    text-decoration: none; /* Remove underline */
+}
+
+
+/* User Menu Styles */
+/* User Menu Styles */
+/* User Menu Styles */
+/* User Menu Styles */
+/* User Menu Styles */
+.userMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userMenu .userIcon {
+    font-size: 30px;
+    color: var(--text-color);
+}
+
+/* User Menu Styles */
+.userMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userMenu .userIcon {
+    font-size: 30px;
+    color: var(--text-color);
+}
+
+.userMenu .dropdown {
+    position: absolute;
+    top: 100%; /* Positions the dropdown just below the icon */
+    left: 50%; /* Aligns the dropdown to the center */
+    transform: translateX(-50%); /* Shifts it back by 50% of its own width */
+    background-color: rgba(255, 255, 255, 0.9); /* White translucent background */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    display: none;
+    flex-direction: column;
+    min-width: 150px;
+    z-index: 100;
+    padding: 5px 0; /* Adds spacing inside the dropdown */
+}
+
+.userMenu:hover .dropdown,
+.userMenu .dropdown:hover {
+    display: flex;
+}
+
+.userMenu .dropdown a {
+    color: var(--nav-color); /* Dark text color for better contrast */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
+    text-align: center; /* Centers the text inside the dropdown */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle divider lines */
+}
+
+.userMenu .dropdown a:last-child {
+    border-bottom: none; /* Remove the border for the last item */
+}
+
+.userMenu .dropdown a:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* More subtle background on hover */
+    color: var(--text-color); /* Text color change on hover */
+}
+
+
 
 @media (max-width: 790px) {
     nav .nav-bar .sidebarOpen{
@@ -272,7 +343,7 @@ body.dark .search-field i{
     }
 
     nav.active .menu{
-        left: -0%;
+        left: 0%;
     }
 
     nav.active .nav-bar .navLogo a{

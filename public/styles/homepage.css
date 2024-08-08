@@ -184,6 +184,7 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
+    width: 100%;
     padding: 2em;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -275,7 +276,9 @@ header {
     .form-outer {
         width: 90%;
     }
-
+    .search-part{
+        height: 100vh;
+    }
     .booking-form {
         flex-direction: column;
     }
