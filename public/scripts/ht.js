@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tripSummary += "<p> Departing: <strong>" + departure.flightAirline + "</strong></p>";
         tripSummary += "<p>" + departure.origin + " -> " + departure.destination + "</p>";
         tripSummary += "<p> Flight " + departure.flightAirline + " | " + departure.flightTimes + " | Non-Stop </p>";
-        tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p>";
+        tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p><br>";
 
     }
     if (arrival){
@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
         tripSummary += "<p> Arriving: <strong>" + arrival.flightAirline + "</strong></p>";
         tripSummary += "<p>" + departure.destination + " -> " + departure.origin + "</p>";
         tripSummary += "<p> Flight " + arrival.flightAirline + " | " + arrival.flightTimes + " | Non-Stop </p>";
-        tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p>";
+        tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p><br>";
     }
-    tripSummary += "<p> Total Fare: ₹" + fare + "</p>";
+    tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
     localStorage.setItem('fare', fare);
     document.getElementById('trip-summary').innerHTML = tripSummary;
     const passengersDiv = document.getElementById('passenger-details');
@@ -71,20 +71,23 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
         passengerDetails.push(ob);
     }
     const departureFlight = JSON.parse(localStorage.getItem('departure-flight'));
-    const arrivalFlight = JSON.parse(localStorage.getItem('arrival-flight')) || null;
+    const arrivalFlight = JSON.parse(localStorage.getItem('arrival-flight')) || {};
     console.log(departureFlight);
     const formData = {
         type: 'flight',
         passengers: passengerDetails,
         departure: departureFlight.date,
-        arrival: arrivalFlight || null,
+        arrival: arrivalFlight.date || undefined,
         price: parseInt(localStorage.getItem('fare'))*100,
         source: departureFlight.origin,
         destination: departureFlight.destination,
         flightID: departureFlight.flightAirline,
+        arrivalflightID: arrivalFlight.flightAirline || undefined,
         departureTime: departureFlight.flightTimes,
-        arrivalTime: departureFlight.flightTimes || null,
+        arrivalTime: arrivalFlight.flightTimes || undefined,
     }
+    localStorage.removeItem('departure-flight');
+    localStorage.removeItem('arrival-flight');
     const token = localStorage.getItem('token');
     fetch('http://localhost:3000/payment/save', {
         method: 'POST',
