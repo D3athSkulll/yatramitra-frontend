@@ -14,6 +14,7 @@ body{
 }
 .row{
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 ul{
@@ -22,6 +23,8 @@ ul{
 .footer{
   background-color: #24262b;
     padding: 70px 0;
+    
+    
 }
 .footer-col{
    width: 25%;

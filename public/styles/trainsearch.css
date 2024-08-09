@@ -90,6 +90,9 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     color: white;
 }
+.flight{
+    margin-top: 160px;
+}
 .main-content{
     max-width: 900px;
     margin: 20px auto;
@@ -100,129 +103,79 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     color: white;
 }
-.flight{
-    margin-top:160px;
-}
-.flight-info {
+.train-info {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #fff;
-    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
 }
-.flight-info:last-child {
-    border-bottom: none;
-}
-.flight-logo {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 4px;
-    margin-right: 20px;
+
+.train-details {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.flight-details {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
-.flight-times, .flight-duration, .flight-type, .flight-emissions, .flight-price {
+
+.train-times {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: left;
+    color: #666;
+}
+
+.train-duration {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     text-align: center;
-    flex-grow: 1;
+    color: #666;
 }
-.flight-times {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
-}
-.flight-duration{
-    display: flex;
-    flex-direction: column;
-}
-.flight-duration, .flight-type, .flight-emissions {
-    flex-grow: 1;
-}
-.flight-emissions {
-    display: flex;
-    flex-direction: column;
-}
-.flight-price {
+
+.train-price {
     color: #28a745;
     font-size: 18px;
     font-weight: bold;
-    flex-grow: 1;
-}
-.flight-times span, .flight-emissions span {
-    display: block;
-}
-.hidden{
-    display:none;
+    text-align: right;
 }
 
-/*Button*/
+.train-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
 .transport-button {
-    backface-visibility: hidden;
-    margin-left:5px;
-    margin-bottom: 15px;
     background: #332cf2;
     border: 0;
     border-radius: .375rem;
-    box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    display: inline-block;
-    font-family: Circular,Helvetica,sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    letter-spacing: -.01em;
-    line-height: 1.3;
-    padding: 1rem 1.25rem;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transform: translateZ(0) scale(1);
-    transition: transform .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .transport-button:disabled {
-    color: #787878;
-    cursor: auto;
-  }
-  
-  .transport-button:not(:disabled):hover {
-    transform: scale(1.05);
-  }
-  
-  .transport-button:not(:disabled):hover:active {
-    transform: scale(1.05) translateY(.125rem);
-  }
-  
-  .transport-button:focus {
-    outline: 0 solid transparent;
-  }
-  
-  .transport-button:focus:before {
-    border-width: .125rem;
-    content: "";
-    left: calc(-1*.375rem);
-    pointer-events: none;
-    position: absolute;
-    top: calc(-1*.375rem);
-    transition: border-radius;
-    user-select: none;
-  }
-  
-  .transport-button:focus:not(:focus-visible) {
-    outline: 0 solid transparent;
-  }
-  
-  .transport-button:not(:disabled):active {
-    transform: translateY(.125rem);
-  }
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.transport-button:hover {
+    background: #2a25d8;
+}
+
+.transport-button:active {
+    background: #241fc2;
+}
+
+.hidden {
+    display: none;
+}
+
   #loader-wrapper {
     position: fixed;
     top: 0;
@@ -285,4 +238,7 @@ body {
     font-size: 24px; /* Increase font size for h2 */
     color: #007BFF; /* Use a more attractive color */
 }
+
+
+
 

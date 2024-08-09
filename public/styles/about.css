@@ -26,6 +26,7 @@ body {
 .content .image img {
     max-width: 70%;
     height: 50%;
+    border-radius: 20px;
 }
 
 .content .text {

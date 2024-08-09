@@ -82,14 +82,16 @@ header {
 
 /*Button*/
 .transport-button {
+
     backface-visibility: hidden;
     margin-left:5px;
-    margin-bottom: 15px;
-    background: #332cf2;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    background-color: transparent;
     border: 0;
     border-radius: .375rem;
     box-sizing: border-box;
-    color: #fff;
+    color: black;
     cursor: pointer;
     display: inline-block;
     font-family: Circular,Helvetica,sans-serif;
@@ -173,6 +175,8 @@ header {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    background-color: white;
+    border-radius: 20px;
 }
 .form{
     transition: transform 1s ease;
