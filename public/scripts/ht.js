@@ -1,28 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const departure = JSON.parse(localStorage.getItem('departure-flight'));
-    console.log(departure);
-    var fare = parseInt(departure.flightPrice);
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+function convertTo12HourFormat(time24) {
+    let [hours, minutes, seconds] = time24.split(':');
+    hours = parseInt(hours);
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12; // Convert 0 to 12 for midnight
+    return `${hours}:${minutes} ${ampm}`;
+}
+const token = localStorage.getItem("token");
+const departureFlight = JSON.parse(localStorage.getItem("departure-flight"));
+var departure = {};
+var arrivalFlight= {};
+var fare = 0;
+document.addEventListener('DOMContentLoaded', async function() {
+    const departureFlightData = await fetch(`http://localhost:3000/api/flight/flightData/${departureFlight.ID}`,{
+        headers:{
+            "Authorization" : `Bearer ${token}`
+        }
+    });
+    console.log(departureFlightData)
+    departure = await departureFlightData.json();
+    departure.date = departureFlight.departureDate;
+    var fare = parseInt(departure.price);
     const arrival = JSON.parse(localStorage.getItem('arrival-flight')) || null;
     var tripSummary = "<h2> Trip Summary </h2><p> Flight Summary </p>";
     if (departure) {
-        tripSummary += "<p> Departing: <strong>" + departure.flightAirline + "</strong></p>";
+        departure.flightTimes = convertTo12HourFormat(departure.departure_time) + " - " + convertTo12HourFormat(departure.arrival_time)
+        tripSummary += "<p> Departing: <strong>" + departure.flight_number + "</strong></p>";
         tripSummary += "<p>" + departure.origin + " -> " + departure.destination + "</p>";
-        tripSummary += "<p> Flight " + departure.flightAirline + " | " + departure.flightTimes + " | Non-Stop </p>";
+        tripSummary += "<p> Flight " + departure.flight_number + " | " + departure.flightTimes + " | Non-Stop </p>";
         tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p><br>";
 
     }
     if (arrival){
-        fare += parseInt(arrival.flightPrice);
-        tripSummary += "<p> Arriving: <strong>" + arrival.flightAirline + "</strong></p>";
-        tripSummary += "<p>" + departure.destination + " -> " + departure.origin + "</p>";
-        tripSummary += "<p> Flight " + arrival.flightAirline + " | " + arrival.flightTimes + " | Non-Stop </p>";
+        const arrivalFlightData = await fetch(`http://localhost:3000/api/flight/flightData/${arrival.ID}`,{
+            headers:{
+                "Authorization" : `Bearer ${token}`
+            }
+        });
+        arrivalFlight = await arrivalFlightData.json();
+        arrivalFlight.date = arrival.arrivalDate;
+        fare += parseInt(arrivalFlight.price);
+        arrivalFlight.flightTimes = convertTo12HourFormat(arrivalFlight.departure_time) + " - " + convertTo12HourFormat(arrivalFlight.arrival_time);
+        tripSummary += "<p> Arriving: <strong>" + arrivalFlight.flight_number + "</strong></p>";
+        tripSummary += "<p>" + arrivalFlight.destination + " -> " + arrivalFlight.origin + "</p>";
+        tripSummary += "<p> Flight " + arrivalFlight.flight_number + " | " + arrivalFlight.flightTimes + " | Non-Stop </p>";
         tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p><br>";
     }
+    const passengers = parseInt(departureFlight.adults);
+    fare = fare * passengers;
     tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
     localStorage.setItem('fare', fare);
     document.getElementById('trip-summary').innerHTML = tripSummary;
     const passengersDiv = document.getElementById('passenger-details');
-    const passengers = parseInt(departure.adults);
     for (var i = 0; i < passengers; i++) {
         const passengerDiv = document.createElement('div');
         passengerDiv.classList.add('passenger');
@@ -70,22 +103,19 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
         }
         passengerDetails.push(ob);
     }
-    const departureFlight = JSON.parse(localStorage.getItem('departure-flight'));
-    const arrivalFlight = JSON.parse(localStorage.getItem('arrival-flight')) || {};
-    console.log(departureFlight);
     const formData = {
         type: 'flight',
         passengers: passengerDetails,
-        departure: departureFlight.date,
+        departure: departure.date,
         arrival: arrivalFlight.date || undefined,
-        price: parseInt(localStorage.getItem('fare'))*100,
-        source: departureFlight.origin,
-        destination: departureFlight.destination,
-        flightID: departureFlight.flightAirline,
-        arrivalflightID: arrivalFlight.flightAirline || undefined,
-        departureTime: departureFlight.flightTimes,
+        source: departure.origin,
+        destination: departure.destination,
+        flightID: departure.flight_number,
+        arrivalflightID: arrivalFlight.flight_number || undefined,
+        departureTime: departure.flightTimes,
         arrivalTime: arrivalFlight.flightTimes || undefined,
     }
+    
     localStorage.removeItem('departure-flight');
     localStorage.removeItem('arrival-flight');
     const token = localStorage.getItem('token');

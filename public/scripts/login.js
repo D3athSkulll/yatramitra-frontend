@@ -103,10 +103,9 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        localStorage.setItem('token', data.token); // Store the token in the browser
+        localStorage.setItem("token", data.token) // Store the token in a cookie
         // Redirect to the desired page after successful login
-        window.location.href = './flightsearch.html'; // Change this to your desired route
+        window.location.href = './homepage.html'; // Change this to your desired route
       } else {
         const errorData = await response.json();
         alert(errorData.message); // Display error message
@@ -141,8 +140,8 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        localStorage.setItem('token', data.token); // Store the token in the browser
-        window.location.href = './flightsearch.html'; // Change this to your desired route
+        localStorage.setItem("token", data.token) // Store the token in a cookie
+        window.location.href = './homepage.html'; // Change this to your desired route
         // Redirect to the desired page after successful registration // Change this to your desired route
       } else {
         const errorData = await response.json();

@@ -4,6 +4,13 @@ window.addEventListener('load', function() {
   console.log(loaderWrapper.classList);
   console.log("Loaded");
 });
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  console.log(value);
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function calculateTime(time) {
     const [hours, minutes, seconds] = time.split(':').map(Number);
     const period = hours >= 12 ? 'PM' : 'AM';
@@ -17,6 +24,8 @@ function calculateTravelTime(ms){
     const minutes = totalMinutes % 60;
     return `${hours} hr ${minutes} min`;
 }
+var depDate;
+var aDate;
 /* ON THE MAIN PAGE
 document.getElementById('oldForm').addEventListener('submit', (event) => {
     event.preventDefault();
@@ -32,7 +41,8 @@ document.getElementById('oldForm').addEventListener('submit', (event) => {
     window.location.href = 'newPage.html';
 });
 */
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
+console.log(token);
 document.addEventListener('DOMContentLoaded', () => {
   const dateInput = document.getElementById("depart-date");
   const today = new Date().toISOString().split("T")[0];
@@ -152,6 +162,8 @@ document.getElementById('searchForm').addEventListener('submit', async (event) =
     const departureDate = document.getElementById('depart-date').value;
     var returnDate = document.getElementById('return-date').value;
     if (returnDate == "") returnDate = undefined;
+    depDate = departureDate;
+    aDate = returnDate;
     const adults = document.getElementById('adults').value;
     console.log({ origin, destination, departureDate,  returnDate, adults });
     try {
@@ -224,7 +236,7 @@ function  displayDepartureFlights(data, oneWay = true){
         </div>
           `;
           flightResults.appendChild(flightElement);
-        },index*100);
+        },index*200);
         });
       if (oneWay){
         flightResults.addEventListener('click', (event) => {
@@ -232,14 +244,9 @@ function  displayDepartureFlights(data, oneWay = true){
             const flightDetails = event.target;
             const flight = flightDetails.parentElement;
             const flightInfo = flight.querySelector('.flight-details');
-            var flightPrice = flightInfo.querySelector('.flight-price').textContent;
-            const flightTimes = flightInfo.querySelector('.flight-times').querySelector('span').textContent;
-            const flightDuration = flightInfo.querySelector('.flight-duration').querySelector('span').textContent;
             const flightAirline = flightInfo.querySelector('.flight-times').querySelectorAll('span')[1].textContent;
-            flightPrice = flightPrice.replace(/[^\d]/g, '');
-            localStorage.setItem('departure-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline, origin: data.origin,
-                                                                       destination: data.destination, adults:data.adults, date: data.departureDate }));
-            localStorage.setItem('arrival-flight', null);
+            localStorage.setItem('departure-flight',JSON.stringify({ID:flightAirline, departureDate:depDate, adults:data.adults}));
+            localStorage.removeItem('arrival-flight');
             window.location.href = './passenger-details.html';
           }
         })
@@ -250,14 +257,10 @@ function  displayDepartureFlights(data, oneWay = true){
             const flightDetails = event.target;
             const flight = flightDetails.parentElement;
             const flightInfo = flight.querySelector('.flight-details');
-            var flightPrice = flightInfo.querySelector('.flight-price').textContent;
-            const flightTimes = flightInfo.querySelector('.flight-times').querySelector('span').textContent;
-            const flightDuration = flightInfo.querySelector('.flight-duration').querySelector('span').textContent;
             const flightAirline = flightInfo.querySelector('.flight-times').querySelectorAll('span')[1].textContent;
-            flightPrice = flightPrice.replace(/[^\d]/g, '')
+            localStorage.setItem('departure-flight',JSON.stringify({ID:flightAirline, departureDate:depDate, adults:data.adults}));
+            localStorage.removeItem('arrival-flight');
 
-            localStorage.setItem('departure-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline ,origin: data.origin, 
-                                                                      destination: data.destination, adults:data.adults, date: data.departureDate}));
             document.getElementById('arrival-body').style.display = 'block';
             document.getElementById('arrival-body').classList.remove('hidden');
             document.getElementById('departure-body').style.display = 'none';
@@ -329,14 +332,8 @@ function displayArrivalFlights(data){
       const flightDetails = event.target;
       const flight = flightDetails.parentElement;
       const flightInfo = flight.querySelector('.flight-details');
-      var flightPrice = flightInfo.querySelector('.flight-price').textContent;
-      const flightTimes = flightInfo.querySelector('.flight-times').querySelector('span').textContent;
-      const flightDuration = flightInfo.querySelector('.flight-duration').querySelector('span').textContent;
       const flightAirline = flightInfo.querySelector('.flight-times').querySelectorAll('span')[1].textContent;
-      flightPrice = flightPrice.replace(/[^\d]/g, '')
-      localStorage.setItem('arrival-flight', JSON.stringify({ flightPrice, flightTimes, flightDuration, flightAirline,
-                                                            date: data.arrivalDate
-       }));
+      localStorage.setItem('arrival-flight',JSON.stringify({ID:flightAirline, arrivalDate:aDate}));
       window.location.href = './passenger-details.html';
     }
   })
