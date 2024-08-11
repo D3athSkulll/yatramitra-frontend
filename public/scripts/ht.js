@@ -110,8 +110,8 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
         arrival: arrivalFlight.date || undefined,
         source: departure.origin,
         destination: departure.destination,
-        flightID: departure.flight_number,
-        arrivalflightID: arrivalFlight.flight_number || undefined,
+        departureID: departure.flight_number,
+        arrivalID: arrivalFlight.flight_number || undefined,
         departureTime: departure.flightTimes,
         arrivalTime: arrivalFlight.flightTimes || undefined,
     }
