@@ -96,9 +96,11 @@ body {
 .main-content{
     max-width: 900px;
     margin: 20px auto;
+    margin-bottom: 15px;
     /* margin-top:60px; */
     background-color: #fff;
     padding: 20px;
+    padding-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     color: white;

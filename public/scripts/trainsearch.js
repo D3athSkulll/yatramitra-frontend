@@ -4,19 +4,28 @@ window.addEventListener('load', function() {
     console.log(loaderWrapper.classList);
     console.log("Loaded");
   });
-  function calculateTime(time) {
-      const [hours, minutes, seconds] = time.split(':').map(Number);
-      const period = hours >= 12 ? 'PM' : 'AM';
-      const hours12 = hours % 12 || 12;
-      const formattedTime = `${hours12}:${minutes.toString().padStart(2, '0')} ${period}`;
-      return formattedTime;
-  }
-  function calculateTravelTime(ms){
-      const totalMinutes = Math.floor(ms / 60000);
-      const hours = Math.floor(totalMinutes / 60);
-      const minutes = totalMinutes % 60;
-      return `${hours} hr ${minutes} min`;
-  }
+  function calculateTime(date) {
+    date = new Date(date);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    
+    let strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
+function calculateTravelTime(startDateString, endDateString) {
+  const startDate = new Date(startDateString);
+  const endDate = new Date(endDateString);
+  const diffMs = endDate - startDate;
+  const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+  const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+  return `${diffHrs} hr ${diffMins} min`;
+}
+
   /* ON THE MAIN PAGE
   document.getElementById('oldForm').addEventListener('submit', (event) => {
       event.preventDefault();
@@ -36,7 +45,6 @@ window.addEventListener('load', function() {
   document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById("depart-date");
     const today = new Date().toISOString().split("T")[0];
-    document.getElementById('return-date').setAttribute("min", today);
       dateInput.setAttribute("min", today);
       const formData = JSON.parse(localStorage.getItem('formData'));
       if (formData) {
@@ -49,9 +57,6 @@ window.addEventListener('load', function() {
           document.getElementById('searchForm').submit();
       }
   });
-  document.getElementById('depart-date').addEventListener('change', (event) => {
-    document.getElementById('return-date').setAttribute("min", document.getElementById('depart-date').value);
-  })
   const selectElement = document.getElementById('trip-type');
   selectElement.addEventListener('change', (event) => {
       const value = event.target.value;
@@ -144,13 +149,13 @@ window.addEventListener('load', function() {
         console.log('Error:', error);
       }
     });
-  
+  var seats = 0;
   document.getElementById('searchForm').addEventListener('submit', async (event) => {
       event.preventDefault();
       const origin = document.getElementById('from').value;
       const destination = document.getElementById('to').value;
       const departureDate = document.getElementById('depart-date').value;
-      const seats = document.getElementById('adults').value;
+      seats = document.getElementById('adults').value;
       console.log({ origin, destination, departureDate,  seats });
       try {
         const loaderContainer = document.getElementById('loader-wrapper');
@@ -192,29 +197,35 @@ window.addEventListener('load', function() {
         setTimeout(()=>{
           const trainElement = document.createElement('div');
           trainElement.innerHTML = `
-          <div class="main-content">
+           <div class="main-content">
+
           <div class="train-info">
-            <div class="train-details">
-              <div class="train-times">
-               <span >
-               ${train.trainName}
-               </span >
-               <span>${train.trainNumber}</span>
-                
-              </div>
 
-              
+    <div class="train-details">
+        <div class="train-times">
+            <span style="font-size: 14px; color: #ccc;">${train.trainNumber}</span>
 
-              <div class="train-duration">
-                <span > travel time</span>
-                <span >${train.departureStation}-${train.arrivalStation}</span>
-              </div>
-
-              <div class="train-price">₹ 1000</div>
-            </div>
-            <button class="transport-button" role="button">Book</button>
-          </div>
         </div>
+        <div class="train-duration">
+          <span style="font-size: 14px; color: #ccc;">${train.trainName}</span>
+          <span style="font-size: 14px; color: #ccc;">${train.departureStation}-${train.arrivalStation}</span>
+
+      </div>
+
+        <div class="train-duration">
+          <span style="font-size: 14px; color: #ccc;">${calculateTime(train.departureTime)} - ${calculateTime(train.arrivalTime)}</span>
+          <span style="font-size: 14px; color: #ccc;">${calculateTravelTime(train.departureTime, train.arrivalTime)}</span>
+
+        </div>
+
+        <div class="train-price">
+            ₹ ${train.price? train.price : 'N/A'}
+        </div>
+    </div>
+    <button class="transport-button" role="button">Book</button>
+</div>
+</div>
+
         `;
         trainResults.appendChild(trainElement);
 },index*100);
@@ -231,6 +242,7 @@ trainResults.addEventListener('click', (event) => {
               const trainName = trainInfo.querySelector('.train-times').querySelectorAll('span')[0].textContent;
               const trainNumber = trainInfo.querySelector('.train-times').querySelectorAll('span')[1].textContent;  
               trainPrice = trainPrice.replace(/[^\d]/g, '');
+              localStorage.setItem('departure-train', JSON.stringify({origin: train.departureStation, destination: train.arrivalStation, date: train.departureTime, seats}));
               localStorage.setItem('departure-train', JSON.stringify({ trainPrice, trainTimes, trainDuration, trainAirline, origin: data.origin,
                                                                          destination: data.destination, seats:data.seats, date: data.departureDate }));
               
