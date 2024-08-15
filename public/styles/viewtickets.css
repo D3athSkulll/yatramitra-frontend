@@ -1,0 +1,89 @@
+body {
+    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.ticket-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ticket-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+    color: #555;
+}
+
+.ticket-type {
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.train-number, .bus-number, .flight-number {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.train-name, .bus-name, .flight-name {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.route {
+    font-size: 14px;
+    margin-top: 2px;
+    color: #777;
+}
+
+.timing, .duration {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.ticket-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price {
+    font-size: 18px;
+    color: green;
+    margin-bottom: 10px;
+}
+
+.view-button {
+    background-color: #1d4ed8;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.view-button:hover {
+    background-color: #1e3a8a;
+}
