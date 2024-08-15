@@ -12,20 +12,13 @@
   <body>
     <header>
       <nav>
-        <div class="nav-bar" id="header">
-        </div>
+        <div class="nav-bar" id="header"></div>
         <div class="flight-navbar">
           <form id="searchForm">
             <div class="search-header">
-             
               <div class="search-field">
                 <label for="from">From</label>
-                <input
-                  type="text"
-                  id="from"
-                  placeholder=""
-                  autocomplete="off"
-                />
+                <input type="text" id="from" placeholder="" autocomplete="on" />
                 <div id="suggestions" class="suggestions"></div>
               </div>
               <button class="swap-button">⇄</button>
@@ -46,7 +39,6 @@
                   <option>3AC</option>
                   <option>2AC</option>
                   <option>1AC</option>
-                  
                 </select>
               </div>
               <div class="search-field adults-count" id="adults-count">
@@ -59,55 +51,54 @@
         </div>
       </nav>
     </header>
-    <div class="loader-wrapper" id = "loader-wrapper">
-      <video id = "loader" autoplay loop muted>
-        <source src="../assets/loader.webm" type="video/webm">
-        </video>
+    <div class="loader-wrapper" id="loader-wrapper">
+      <video id="loader" autoplay loop muted>
+        <source src="../assets/loader.webm" type="video/webm" />
+      </video>
     </div>
-    <div class="flight" id="departure-body" >
+    <div class="flight" id="departure-body">
       <div class="departure-flight-text">
         <h2><span>Select Train</span></h2>
       </div>
       <div id="departure-results">
         <div class="main-content">
-  
-            <div class="train-info">
-      
-      <div class="train-details">
-          <div class="train-times">
-              <!-- <span>${calculateTime(train.departure_time)} – ${calculateTime(train.arrival_time)}</span> -->
-              <span style="font-size: 14px; color: #ccc;">${train.train_number}</span>
-              
-          </div>
-          <div class="train-duration">
-            <span style="font-size: 14px; color: #ccc;">${train.train_name}</span>
-            <!-- <span> ${calculateTravelTime(train.travel_time)}</span> -->
-            <span style="font-size: 14px; color: #ccc;">${train.origin}-${train.destination}</span>
+          <div class="train-info">
+            <div class="train-details">
+              <div class="train-times">
+                <!-- <span>${calculateTime(train.departure_time)} – ${calculateTime(train.arrival_time)}</span> -->
+                <span style="font-size: 14px; color: #ccc"
+                  >${train.train_number}</span
+                >
+              </div>
+              <div class="train-duration-actual">
+                <span style="font-size: 14px; color: #ccc"
+                  >${train.train_name}</span
+                >
+                <!-- <span> ${calculateTravelTime(train.travel_time)}</span> -->
+                <span style="font-size: 14px; color: #ccc"
+                  >${train.origin}-${train.destination}</span
+                >
+              </div>
 
+              <div class="train-duration">
+                <!-- <span> ${calculateTravelTime(train.travel_time)}</span> -->
+                <span style="font-size: 14px; color: #ccc"
+                  >${data.origin}-${data.destination}</span
+                >
+              </div>
+
+              <div class="train-price">₹ ${train.price}</div>
+            </div>
+            <button class="transport-button" role="button">Book</button>
+          </div>
         </div>
-          
-          <div class="train-duration">
-              <!-- <span> ${calculateTravelTime(train.travel_time)}</span> -->
-              <span style="font-size: 14px; color: #ccc;">${data.origin}-${data.destination}</span>
-
-          </div>
-          
-          <div class="train-price">
-              ₹ ${train.price}
-          </div>
-      </div>
-      <button class="transport-button" role="button">Book</button>
-  </div>
-  </div>
-        
-
       </div>
       <!---  sss-->
     </div>
-    
+
     <!-- Button goBack onclick="goBack()" -->
     <!-- Select Arrival Flight -->
-    <script src="../scripts/flightsearch.js"></script>
+    <script src="../scripts/trainsearch.js"></script>
     <script src="../scripts/navbar.js"></script>
   </body>
 </html>

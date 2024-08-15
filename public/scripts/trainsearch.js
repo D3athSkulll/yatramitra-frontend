@@ -77,7 +77,7 @@ window.addEventListener('load', function() {
       }
       suggestionsContainer.style.display = 'block';
       try {
-        const response = await fetch(apiUrl+`api/flight/autocomplete?query=${origin}`,{
+        const response = await fetch(apiUrl+`api/train/autocomplete?query=${origin}`,{
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -89,9 +89,9 @@ window.addEventListener('load', function() {
           data.forEach(el => {
               const suggestionItem = document.createElement('div');
               suggestionItem.classList.add('suggestion-item');
-              suggestionItem.textContent = `${el.city}, ${el.name} (${el.iata_code})`;
+              suggestionItem.textContent = `${el.city}, ${el.name} (${el.stationCode})`;
               suggestionItem.addEventListener('click', () => {
-                  fromSearch.value = el.iata_code;
+                  fromSearch.value = el.stationCode;
                   suggestionsContainer.innerHTML = '';
                   suggestionsContainer.style.display='none';
               });
@@ -115,7 +115,7 @@ window.addEventListener('load', function() {
       }
       suggestionsContainer.style.display = 'block';
       try {
-        const response = await fetch(apiUrl+`api/flight/autocomplete?query=${origin}`,{
+        const response = await fetch(apiUrl+`api/train/autocomplete?query=${origin}`,{
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -127,9 +127,9 @@ window.addEventListener('load', function() {
           data.forEach(el => {
               const suggestionItem = document.createElement('div');
               suggestionItem.classList.add('suggestion-item');
-              suggestionItem.textContent = `${el.city}, ${el.name} (${el.iata_code})`;
+              suggestionItem.textContent = `${el.city}, ${el.name} (${el.stationCode})`;
               suggestionItem.addEventListener('click', () => {
-                  toSearch.value = el.iata_code;
+                  toSearch.value = el.stationCode;
                   suggestionsContainer.innerHTML = '';
                   suggestionsContainer.style.display='none';
   
@@ -150,20 +150,18 @@ window.addEventListener('load', function() {
       const origin = document.getElementById('from').value;
       const destination = document.getElementById('to').value;
       const departureDate = document.getElementById('depart-date').value;
-      var returnDate = document.getElementById('return-date').value;
-      if (returnDate == "") returnDate = undefined;
-      const adults = document.getElementById('adults').value;
-      console.log({ origin, destination, departureDate,  returnDate, adults });
+      const seats = document.getElementById('adults').value;
+      console.log({ origin, destination, departureDate,  seats });
       try {
         const loaderContainer = document.getElementById('loader-wrapper');
         loaderContainer.classList.remove("hidden");
-        const response = await fetch(apiUrl+'api/flight/search', {
+        const response = await fetch(apiUrl+'api/train/search', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify({ origin, destination, departureDate, adults, returnDate})
+          body: JSON.stringify({ departureStation:origin ,arrivalStation:destination, Date: departureDate, seats})
         });
   
         if (response.ok) {
@@ -172,7 +170,7 @@ window.addEventListener('load', function() {
           data.origin = origin;
           data.destination = destination;
           console.log(data);
-          displayDepartureFlights(data, data.isOneWay);
+          displayTrains(data);
           // Redirect to the desired page after successful search
           // window.location.href = '/search'; // Change this to your desired route
         }
@@ -185,8 +183,64 @@ window.addEventListener('load', function() {
         console.log('Error:', error);
       }
     });
+
+    function displayTrains(data)
+    {
+      const trainResults = document.getElementById('departure-results');
+      trainResults.innerHTML = '';
+      data.trains.forEach((train,index) => {
+        setTimeout(()=>{
+          const trainElement = document.createElement('div');
+          trainElement.innerHTML = `
+          <div class="main-content">
+          <div class="train-info">
+            <div class="train-details">
+              <div class="train-times">
+               <span >
+               ${train.trainName}
+               </span >
+               <span>${train.trainNumber}</span>
+                
+              </div>
+
+              
+
+              <div class="train-duration">
+                <span > travel time</span>
+                <span >${train.departureStation}-${train.arrivalStation}</span>
+              </div>
+
+              <div class="train-price">₹ 1000</div>
+            </div>
+            <button class="transport-button" role="button">Book</button>
+          </div>
+        </div>
+        `;
+        trainResults.appendChild(trainElement);
+},index*100);
+});
+trainResults.addEventListener('click', (event) => {
+            if(event.target.tagName== 'BUTTON'){
+              const trainDetails = event.target;
+              const train = trainDetails.parentElement;
+              const trainInfo = train.querySelector('.train-details');
+              var trainPrice = trainInfo.querySelector('.train-price').textContent;
+              const trainTimes = trainInfo.querySelector('.train-times').querySelector('span').textContent;
+              const trainDurationActual = trainInfo.querySelector('.train-duration-actual').querySelector('span').textContent;
+              const trainDuration = trainInfo.querySelector('.train-duration').querySelector('span').textContent;
+              const trainName = trainInfo.querySelector('.train-times').querySelectorAll('span')[0].textContent;
+              const trainNumber = trainInfo.querySelector('.train-times').querySelectorAll('span')[1].textContent;  
+              trainPrice = trainPrice.replace(/[^\d]/g, '');
+              localStorage.setItem('departure-train', JSON.stringify({ trainPrice, trainTimes, trainDuration, trainAirline, origin: data.origin,
+                                                                         destination: data.destination, seats:data.seats, date: data.departureDate }));
+              
+              window.location.href = './passenger-details.html';
+            }
+          });
+          
+    }
   
-  
+   
   function  displayDepartureFlights(data, oneWay = true){
       const flightResults = document.getElementById('departure-results');
           flightResults.innerHTML = '';

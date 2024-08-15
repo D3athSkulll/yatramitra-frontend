@@ -202,6 +202,7 @@ document.getElementById('searchForm').addEventListener('submit', async (event) =
 function  displayDepartureFlights(data, oneWay = true){
     const flightResults = document.getElementById('departure-results');
         flightResults.innerHTML = '';
+        console.log(data);
         data.departureFlights.forEach((flight,index) => {
           setTimeout(() => {          
           const flightElement = document.createElement('div');
