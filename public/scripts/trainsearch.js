@@ -175,7 +175,7 @@ function calculateTravelTime(startDateString, endDateString) {
           data.origin = origin;
           data.destination = destination;
           console.log(data);
-          displayTrains(data);
+          displayTrains(data, departureDate);
           // Redirect to the desired page after successful search
           // window.location.href = '/search'; // Change this to your desired route
         }
@@ -189,7 +189,7 @@ function calculateTravelTime(startDateString, endDateString) {
       }
     });
 
-    function displayTrains(data)
+    function displayTrains(data, departureDate)
     {
       const trainResults = document.getElementById('departure-results');
       trainResults.innerHTML = '';
@@ -218,7 +218,7 @@ function calculateTravelTime(startDateString, endDateString) {
 
         </div>
 
-        <div class="train-price">
+        <div class="train-price" id="train-price">
             ₹ ${train.price? train.price : 'N/A'}
         </div>
     </div>
@@ -236,17 +236,14 @@ trainResults.addEventListener('click', (event) => {
               const train = trainDetails.parentElement;
               const trainInfo = train.querySelector('.train-details');
               var trainPrice = trainInfo.querySelector('.train-price').textContent;
-              const trainTimes = trainInfo.querySelector('.train-times').querySelector('span').textContent;
-              const trainDurationActual = trainInfo.querySelector('.train-duration-actual').querySelector('span').textContent;
-              const trainDuration = trainInfo.querySelector('.train-duration').querySelector('span').textContent;
-              const trainName = trainInfo.querySelector('.train-times').querySelectorAll('span')[0].textContent;
-              const trainNumber = trainInfo.querySelector('.train-times').querySelectorAll('span')[1].textContent;  
+              const trainNumber = trainInfo.querySelector('.train-times').querySelector('span').textContent;
+              const trainDuration = trainInfo.querySelectorAll('.train-duration')[1].querySelector('span').textContent;
+              const trainName = trainInfo.querySelector('.train-duration').querySelector('span').textContent;
               trainPrice = trainPrice.replace(/[^\d]/g, '');
-              localStorage.setItem('departure-train', JSON.stringify({origin: train.departureStation, destination: train.arrivalStation, date: train.departureTime, seats}));
-              localStorage.setItem('departure-train', JSON.stringify({ trainPrice, trainTimes, trainDuration, trainAirline, origin: data.origin,
-                                                                         destination: data.destination, seats:data.seats, date: data.departureDate }));
+              localStorage.setItem('departure-train', JSON.stringify({ trainPrice, trainNumber, trainName, origin: data.origin,
+                                                                         destination: data.destination, seats, departureDate, trainDuration }));
               
-              window.location.href = './passenger-details.html';
+              window.location.href = './train-details.html';
             }
           });
           
