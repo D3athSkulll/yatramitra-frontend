@@ -25,11 +25,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('header').innerHTML = headerHTML;
     const footer = `
     <div class="footer-container">
-<<<<<<< Updated upstream
                 <div class="footer-row">
-=======
-                <div class="row">
->>>>>>> Stashed changes
                     <div class="footer-col">
                         <h4>company</h4>
                         <ul>
