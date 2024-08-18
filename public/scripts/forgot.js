@@ -8,7 +8,7 @@ document.getElementById('forgot-password-form').addEventListener('submit', funct
     responseMessage.textContent = '';
     
     // Simulate sending the request (here you would actually send a request to your server)
-    fetch('http://localhost:3000/auth/forgot-password',
+    fetch('https://yatramitra-backend.onrender.com/auth/forgot-password',
     {
         method: 'POST',
         headers: {
