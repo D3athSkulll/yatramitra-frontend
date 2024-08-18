@@ -1,0 +1,60 @@
+.travel-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 15px;
+}
+
+.travel-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-info {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.rating {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.price .amount {
+    color: #1a73e8;
+    font-weight: bold;
+}
+
+.bus-info, .locations {
+    font-size: 14px;
+    color: #666;
+}
+
+.view-seats {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}

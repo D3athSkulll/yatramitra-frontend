@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="../styles/viewtickets.css">
 </head>
 <body>
+    <div class="form-selection-buttons-wrapper">
+        <div class="form-selection-buttons">
+            <!-- Your buttons go here -->
+            <button class="transport-button flight-button">Flight</button>
+            <button class="transport-button train-button">Train</button>
+            <button class="transport-button bus-button">Bus</button>
+        </div>
+    </div>
+    <h2>Your Booked Tickets</h2>
     <div class="ticket-container">
-        <h2>Your Booked Tickets</h2>
+        
 
         <!-- Railway Ticket -->
-        <div class="ticket-card">
+        <!-- <div class="train ticket-card">
             <div class="ticket-info">
-                <span class="ticket-type">Railway</span>
                 <span class="train-number">12301</span>
                 <span class="train-name">Rajdhani Express</span>
                 <span class="route">CSTM-NDLS</span>
@@ -26,10 +34,9 @@
             </div>
         </div>
 
-        <!-- Bus Ticket -->
-        <div class="ticket-card">
+         Bus Ticket 
+        <div class="bus ticket-card">
             <div class="ticket-info">
-                <span class="ticket-type">Bus</span>
                 <span class="bus-number">MH12XY3456</span>
                 <span class="bus-name">Shivneri Express</span>
                 <span class="route">Mumbai-Pune</span>
@@ -40,23 +47,40 @@
                 <span class="price">₹ 450</span>
                 <button class="view-button">View Details</button>
             </div>
-        </div>
+        </div> -->
 
         <!-- Flight Ticket -->
-        <div class="ticket-card">
-            <div class="ticket-info">
-                <span class="ticket-type">Flight</span>
-                <span class="flight-number">AI-101</span>
-                <span class="flight-name">Air India</span>
-                <span class="route">Mumbai-Delhi</span>
-                <span class="timing">9:00 AM - 11:30 AM</span>
-                <span class="duration">2 hr 30 min</span>
-            </div>
-            <div class="ticket-price">
-                <span class="price">₹ 7500</span>
-                <button class="view-button">View Details</button>
+        <div class="flight ticket-card ">
+            <div class="ticket">
+                <div class="ticket-header">
+                    <div class="ticket-number">PNR: {{pnr}}</div>
+                    <div class="ticket-class">{{class}}</div>
+                </div>
+                <div class="ticket-details">
+                    <div class="ticket-route">
+                        <span>{{source}} ({{departureID}})</span> → <span>{{destination}} ({{arrivalID}})</span>
+                    </div>
+                    <div class="ticket-time">
+                        <div>Departure: {{departureTime}}, {{departure}}</div>
+                        <div>Arrival: {{arrivalTime}}, {{arrival}}</div>
+                    </div>
+                    <div class="ticket-price">
+                        <span>Price: &#8377; {{price}}</span>
+                    </div>
+                </div>
+                <div class="ticket-passengers">
+                    <h3>Passengers</h3>
+                    <ul>
+                        {{#each passengers}}
+                        <li>{{this.name}}, Age: {{this.age}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
+        
     </div>
+<script src="../scripts/viewtickets.js"></script>
 </body>
+
 </html>
