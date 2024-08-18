@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
 
-body {
+
+.contact{
     font-family: Nunito, sans-serif;
     background-color: #f9f9f9;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-}
-
+    margin: 0;}
 .contact_us_green * {
     font-family: Nunito, sans-serif;
 }
@@ -173,7 +172,7 @@ body {
 }
 .contact_us_green .form-group input {
     width: 90%;
-    height: 10px;
+    height: 45px;
     max-width: 400px; /* Adjusted width to fit better */
     padding: 15px; /* Reduced padding */
     border: 2px solid #a2a2a2;
