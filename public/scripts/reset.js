@@ -34,7 +34,7 @@ document.getElementById('reset-password-form').addEventListener('submit', functi
     .then(response => response.json())
     .then(data => {
         loaderContainer.classList.add("hidden");
-        if (data.success) {
+        if (data.data) {
             responseMessage.textContent = 'Your password has been successfully reset.';
             responseMessage.style.color = '#28a745';
             setTimeout(() => {
