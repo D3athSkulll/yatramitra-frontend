@@ -110,6 +110,7 @@ body {
 .team-cards {
     display: flex;
     justify-content: space-around;
+    padding-top: 40px;
     flex-wrap: wrap;
 }
 .card {
