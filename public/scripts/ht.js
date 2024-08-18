@@ -3,6 +3,10 @@ function getCookie(name) {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
   }
+window.addEventListener('load', function() {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    loaderWrapper.classList.remove('hidden');
+  });
 function convertTo12HourFormat(time24) {
     let [hours, minutes, seconds] = time24.split(':');
     hours = parseInt(hours);
@@ -16,6 +20,8 @@ var departure = {};
 var arrivalFlight= {};
 var fare = 0;
 document.addEventListener('DOMContentLoaded', async function() {
+    const loaderContainer = document.getElementById('loader-wrapper');
+    loaderContainer.classList.remove("hidden");
     const departureFlightData = await fetch(`https://yatramitra-backend.onrender.com/api/flight/flightData/${departureFlight.ID}`,{
         headers:{
             "Authorization" : `Bearer ${token}`
@@ -50,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         tripSummary += "<p> Flight " + arrivalFlight.flight_number + " | " + arrivalFlight.flightTimes + " | Non-Stop </p>";
         tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p><br>";
     }
+
     const passengers = parseInt(departureFlight.adults);
     fare = fare * passengers;
     tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
@@ -82,6 +89,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         passengerDiv.innerHTML = ht;
         passengersDiv.appendChild(passengerDiv);
     }
+    loaderContainer.classList.add("hidden");
+
 });
 document.getElementById('passenger-form').addEventListener('submit', function(event) {
     event.preventDefault();

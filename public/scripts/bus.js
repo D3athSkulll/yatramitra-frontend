@@ -11,18 +11,24 @@ function convertTo12HourFormat(time24) {
     return `${hours}:${minutes} ${ampm}`;
 }
 const token = localStorage.getItem("token");
-const departureFlight = JSON.parse(localStorage.getItem("departure-bus"));
+const departureBus = JSON.parse(localStorage.getItem("departure-bus"));
 var departure = {};
-var arrivalFlight= {};
+var arrivalBus= {};
 var fare = 0;
+window.addEventListener('load', function() {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    loaderWrapper.classList.remove('hidden');
+  });
 document.addEventListener('DOMContentLoaded', async function() {
-    const departureFlightData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${departureFlight.ID}`,{
+    const loaderContainer = document.getElementById('loader-wrapper');
+    loaderContainer.classList.remove("hidden");
+    const departureBusData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${departureBus.ID}`,{
         headers:{
             "Authorization" : `Bearer ${token}`
         }
     });
-    departure = await departureFlightData.json();
-    departure.date = departureFlight.departureDate;
+    departure = await departureBusData.json();
+    departure.date = departureBus.departureDate;
     var fare = parseInt(departure.price);
     const arrival = JSON.parse(localStorage.getItem('arrival-bus')) || null;
     var tripSummary = "<h2> Trip Summary </h2><p> Bus Summary </p>";
@@ -34,20 +40,20 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     }
     if (arrival){
-        const arrivalFlightData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${arrival.ID}`,{
+        const arrivalBusData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${arrival.ID}`,{
             headers:{
                 "Authorization" : `Bearer ${token}`
             }
         });
-        arrivalFlight = await arrivalFlightData.json();
-        arrivalFlight.date = arrival.arrivalDate;
-        fare += parseInt(arrivalFlight.price);
-        arrivalFlight.flightTimes = convertTo12HourFormat(arrivalFlight.departure_time) + " - " + convertTo12HourFormat(arrivalFlight.arrival_time);
-        tripSummary += "<p> Arriving: <strong>" + arrivalFlight.bus_number + "</strong></p>";
-        tripSummary += "<p>" + arrivalFlight.destination + " -> " + arrivalFlight.origin + "</p>";
-        tripSummary += "<p> Bus " + arrivalFlight.bus_number + " | " + arrivalFlight.flightTimes + " | Non-Stop </p>";
+        arrivalBus = await arrivalBusData.json();
+        arrivalBus.date = arrival.arrivalDate;
+        fare += parseInt(arrivalBus.price);
+        arrivalBus.flightTimes = convertTo12HourFormat(arrivalBus.departure_time) + " - " + convertTo12HourFormat(arrivalBus.arrival_time);
+        tripSummary += "<p> Arriving: <strong>" + arrivalBus.bus_number + "</strong></p>";
+        tripSummary += "<p>" + arrivalBus.destination + " -> " + arrivalBus.origin + "</p>";
+        tripSummary += "<p> Bus " + arrivalBus.bus_number + " | " + arrivalBus.flightTimes + " | Non-Stop </p>";
     }
-    const passengers = parseInt(departureFlight.adults);
+    const passengers = parseInt(departureBus.adults);
     fare = fare * passengers;
     tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
     localStorage.setItem('fare', fare);
@@ -79,6 +85,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         passengerDiv.innerHTML = ht;
         passengersDiv.appendChild(passengerDiv);
     }
+    loaderContainer.classList.add("hidden");
+
 });
 document.getElementById('passenger-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -104,13 +112,13 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
         type: 'bus',
         passengers: passengerDetails,
         departure: departure.date,
-        arrival: arrivalFlight.date || undefined,
+        arrival: arrivalBus.date || undefined,
         source: departure.origin,
         destination: departure.destination,
         departureID: departure.bus_number,
-        arrivalID: arrivalFlight.bus_number || undefined,
+        arrivalID: arrivalBus.bus_number || undefined,
         departureTime: departure.flightTimes,
-        arrivalTime: arrivalFlight.flightTimes || undefined,
+        arrivalTime: arrivalBus.flightTimes || undefined,
     }
     
     localStorage.removeItem('departure-bus');

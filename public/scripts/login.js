@@ -1,5 +1,10 @@
 
-
+window.addEventListener('load', function() {
+  const loaderWrapper = document.getElementById('loader-wrapper');
+  loaderWrapper.classList.add('hidden');
+  console.log(loaderWrapper.classList);
+  console.log("Loaded");
+});
 document.getElementById('regPass').addEventListener('keyup', function (event) {
   var input = event.target;
   var password = document.getElementById("regPass").value;
@@ -93,6 +98,8 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     const password = document.getElementById('loginPass').value;
 
     try {
+      const loaderContainer = document.getElementById('loader-wrapper');
+      loaderContainer.classList.remove("hidden");
       const response = await fetch(apiUrl+'auth/login', {
         method: 'POST',
         headers: {
@@ -100,7 +107,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         },
         body: JSON.stringify({ email, password })
       });
-
+      loaderContainer.classList.add("hidden");
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("token", data.token) // Store the token in a cookie
@@ -129,6 +136,8 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     }
 
     try {
+      const loaderContainer = document.getElementById('loader-wrapper');
+        loaderContainer.classList.remove("hidden");
       const response = await fetch(apiUrl+'auth/register', {
         method: 'POST',
         headers: {  
@@ -136,7 +145,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         },
         body: JSON.stringify({ name, email, number, password })
       });
-
+      loaderContainer.classList.add("hidden");
       if (response.ok) {
         const data = await response.json();
         console.log(data);
