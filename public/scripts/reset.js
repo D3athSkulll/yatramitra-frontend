@@ -22,7 +22,7 @@ document.getElementById('reset-password-form').addEventListener('submit', functi
     }
     const loaderContainer = document.getElementById('loader-wrapper');
     loaderContainer.classList.remove("hidden");
-    fetch(`https://yatramitra-backend.onrender.com//auth/reset-password`, {
+    fetch(`https://yatramitra-backend.onrender.com/auth/reset-password`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
