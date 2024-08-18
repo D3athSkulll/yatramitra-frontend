@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let isLoggedIn = localStorage.getItem("token"); // Replace this with your actual login logic
     // localStorage.removeItem("token");
     try {
-        const response = await fetch("http://localhost:3000/auth/verify", {
+        const response = await fetch("https://yatramitra-backend.onrender.com/auth/verify", {
             headers: {
                 "Authorization": `Bearer ${isLoggedIn}`
             }

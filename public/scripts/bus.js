@@ -16,7 +16,7 @@ var departure = {};
 var arrivalFlight= {};
 var fare = 0;
 document.addEventListener('DOMContentLoaded', async function() {
-    const departureFlightData = await fetch(`http://localhost:3000/api/bus/busData/${departureFlight.ID}`,{
+    const departureFlightData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${departureFlight.ID}`,{
         headers:{
             "Authorization" : `Bearer ${token}`
         }
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     }
     if (arrival){
-        const arrivalFlightData = await fetch(`http://localhost:3000/api/bus/busData/${arrival.ID}`,{
+        const arrivalFlightData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${arrival.ID}`,{
             headers:{
                 "Authorization" : `Bearer ${token}`
             }
@@ -116,7 +116,7 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
     localStorage.removeItem('departure-bus');
     localStorage.removeItem('arrival-bus');
     const token = localStorage.getItem('token');
-    fetch('http://localhost:3000/payment/save', {
+    fetch('https://yatramitra-backend.onrender.com/payment/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

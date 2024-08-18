@@ -86,7 +86,7 @@ document.getElementById('name').addEventListener('keyup', function (event) {
       input.setCustomValidity('');
   }
 });
-const apiUrl = "http://localhost:3000/"
+const apiUrl = "https://yatramitra-backend.onrender.com/"
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;

@@ -75,7 +75,7 @@ selectElement.addEventListener('change', (event) => {
     document.querySelector("#return-date").value = "SELECT ROUND TRIP";
     }
 });
-const apiUrl = "http://localhost:3000/"
+const apiUrl = "https://yatramitra-backend.onrender.com/"
 const fromSearch = document.getElementById('from');
 fromSearch.addEventListener('input', async (event) => {
     const suggestionsContainer = document.getElementById('suggestions');

@@ -87,7 +87,7 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
     
     localStorage.removeItem('departure-train');
     const token = localStorage.getItem('token');
-    fetch('http://localhost:3000/payment/save', {
+    fetch('https://yatramitra-backend.onrender.com/payment/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
