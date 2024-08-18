@@ -90,6 +90,7 @@ ul{
     font-size: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separation */
     margin-top: 40px; /* Adds space above the footer bottom */
+    margin-bottom: -20px;
 }
 
 .footer-bottom p {
