@@ -75,7 +75,7 @@ selectElement.addEventListener('change', (event) => {
     document.querySelector("#return-date").value = "SELECT ROUND TRIP";
     }
 });
-const apiUrl = "http://localhost:3000/"
+const apiUrl = "https://yatramitra-backend.onrender.com/"
 const fromSearch = document.getElementById('from');
 fromSearch.addEventListener('input', async (event) => {
     const suggestionsContainer = document.getElementById('suggestions');
@@ -216,12 +216,12 @@ function  displayDepartureFlights(data, oneWay = true){
             </div>
             <div class="flight-details">
                 <div class="flight-times">
-                    <span>${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
+                    <span style="font-size: 14px; color: #ccc;">${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
                     <span style="font-size: 14px; color: #ccc;">${flight.flight_number}</span>
                     <span style="font-size: 14px; color: #ccc;">${flight.airline_name}</span>
                 </div>
                 <div class="flight-duration">
-                    <span> ${calculateTravelTime(flight.travel_time)}</span>
+                    <span style="font-size: 14px; color: #ccc;"> ${calculateTravelTime(flight.travel_time)}</span>
                     <span style="font-size: 14px; color: #ccc;">${data.origin}-${data.destination}</span>
 
                 </div>
@@ -306,7 +306,7 @@ function displayArrivalFlights(data){
       </div>
       <div class="flight-details">
           <div class="flight-times">
-              <span>${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
+              <span style="font-size: 14px; color: #ccc;">${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
               <span style="font-size: 14px; color: #ccc;">${flight.flight_number}</span>
               <span style="font-size: 14px; color: #ccc;">${flight.airline_name}</span>
           </div>

@@ -1,24 +1,10 @@
 document.addEventListener('DOMContentLoaded', async function() {
     // Check if the user is logged in (this is just a placeholder, replace it with your actual login check)
-    let isLoggedIn = localStorage.getItem("token"); // Replace this with your actual login logic
+    let isLoggedIn = localStorage.getItem("token");
     // localStorage.removeItem("token");
     try {
-        const response = await fetch("http://localhost:3000/auth/verify", {
-            headers: {
-                "Authorization": `Bearer ${isLoggedIn}`
-            }
-        });
-
-        if (response.status==200) {
-            isLoggedIn = true;
-        } else {
-            isLoggedIn = false;
-        }
-    } catch (err) {
-        isLoggedIn = false;
-    }
     // Header HTML
-    let headerHTML = `
+    var headerHTML = `
     <nav>
         <div class="nav-bar">
             <i class='bx bx-menu sidebarOpen'></i>
@@ -36,8 +22,23 @@ document.addEventListener('DOMContentLoaded', async function() {
                 </ul>
             </div>
             <div class="darkLight-searchBox">`;
+    document.getElementById('header').innerHTML = headerHTML;
 
     // Conditional display of login button or user icon
+    const response = await fetch("https://yatramitra-backend.onrender.com/auth/verify", {
+        headers: {
+            "Authorization": `Bearer ${isLoggedIn}`
+        }
+    });
+
+    if (response.status==200) {
+        isLoggedIn = true;
+    } else {
+        isLoggedIn = false;
+    }
+} catch (err) {
+    isLoggedIn = false;
+}
     if (isLoggedIn) {
         headerHTML += `
                 <div class="userMenu">
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Add event listener for logout
     if (isLoggedIn) {
         document.getElementById("logout").addEventListener("click", function() {
-            localStorage.removeItem("isLoggedIn"); // Clear login status
+            localStorage.removeItem("token"); // Clear login status
             location.reload(); // Reload the page to reflect changes
         });
     }
@@ -78,10 +79,6 @@ document.addEventListener('DOMContentLoaded', async function() {
   
 
     // toggle search box
-    searchToggle.addEventListener("click", () => {
-        searchToggle.classList.toggle("active");
-    });
-
     // toggle sidebar
     sidebarOpen.addEventListener("click", () => {
         nav.classList.add("active");
