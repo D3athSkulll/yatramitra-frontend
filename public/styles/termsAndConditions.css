@@ -1,14 +1,12 @@
-body {
+
+.container {
+    max-width: 800px;
+    margin: 120px auto;
+    margin-bottom: 80px;
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-.container {
-    max-width: 800px;
-    margin: 0 auto;
     padding: 40px 20px;
     background-color: #ffffff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
