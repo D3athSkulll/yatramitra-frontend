@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <i class='bx bx-x siderbarClose'></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="./homepage.html"><span>Home</span></a></li>
-                    <li><a href="./about.html"><span>About</span></a></li>
-                    <li><a href="./services.html"><span>Services</span></a></li>
-                    <li><a href="./contact.html"><span>Contact</span></a></li>
+                    <li><a href="../views/homepage.html"><span>Home</span></a></li>
+                    <li><a href="../views/about.html"><span>About</span></a></li>
+                    <li><a href="../views/services.html"><span>Services</span></a></li>
+                    <li><a href="../views/contact.html"><span>Contact</span></a></li>
                 </ul>
             </div>
             <div class="darkLight-searchBox">`;
@@ -29,17 +29,17 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <div class="footer-col">
                         <h4>company</h4>
                         <ul>
-                            <li><a href="./about.html">about us</a></li>
-                            <li><a href="./services.html">our services</a></li>
-                            <li><a href="./privacypolicy.html">privacy policy</a></li>
-                            <li><a href="./termsAndConditions">terms of service</a></li>
+                            <li><a href="../views/about.html">about us</a></li>
+                            <li><a href="../views/services.html">our services</a></li>
+                            <li><a href="../views/privacypolicy.html">privacy policy</a></li>
+                            <li><a href="../views/termsAndConditions">terms of service</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h4>get help</h4>
                         <ul>
-                            <li><a href="./faq.html">FAQ</a></li>
-                            <li><a href="./contact.html">contact us</a></li>
+                            <li><a href="../views/faq.html">FAQ</a></li>
+                            <li><a href="../views/contact.html">contact us</a></li>
                         </ul>
                     </div>
                     
