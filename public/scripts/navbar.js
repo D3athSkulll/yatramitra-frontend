@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             <li><a href="../views/about.html">about us</a></li>
                             <li><a href="../views/services.html">our services</a></li>
                             <li><a href="../views/privacypolicy.html">privacy policy</a></li>
-                            <li><a href="../views/termsAndConditions">terms of service</a></li>
+                            <li><a href="../views/termsAndConditions.html">terms of service</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
