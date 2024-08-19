@@ -420,7 +420,7 @@ header {
     cursor: pointer;
     border-radius: 50%;
     z-index: 2; /* Ensure controls are above the carousel */
-    width: 25px; /* Adjust width of the button */
+    width: 15px; /* Adjust width of the button */
     height: 25px; /* Adjust height of the button */
     display: flex;
     align-items: center;

@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         incomingForm.classList.remove('hidden');
         outgoingForm.classList.add('hidden');
-                currentFormIndex = targetIndex;
+        currentFormIndex = targetIndex;
     }
 
     function switchAds(targetIndex) {
