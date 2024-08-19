@@ -146,7 +146,7 @@
             <button type="submit">Pay Now</button>
         </form>
     </div>
-    <footer class="footer" id="footer"></footer>
+    
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
@@ -200,7 +200,7 @@
                         billing_details: billingDetails,
                     },
                 }).then(async function (result) {
-                    await fetch('http://localhost:3000/payment/data',{
+                    await fetch('https://yatramitra-backend.onrender.com/payment/data',{
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -229,6 +229,7 @@
             }
         });
     </script>
+    <footer class="footer" id="footer"></footer>
 </body>
 <script src="../scripts/navbar.js"></script>
 
