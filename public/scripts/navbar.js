@@ -30,17 +30,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <h4>company</h4>
                         <ul>
                             <li><a href="./about.html">about us</a></li>
-                            <li><a href="#">our services</a></li>
-                            <li><a href="#">privacy policy</a></li>
-                            <li><a href="#">terms of service</a></li>
+                            <li><a href="./services.html">our services</a></li>
+                            <li><a href="./privacypolicy.html">privacy policy</a></li>
+                            <li><a href="./termsAndConditions">terms of service</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h4>get help</h4>
                         <ul>
-                            <li><a href="#">FAQ</a></li>
+                            <li><a href="./faq.html">FAQ</a></li>
                             <li><a href="./contact.html">contact us</a></li>
-                            <li><a href="#">cancellations & refunds</a></li>
                         </ul>
                     </div>
                     
