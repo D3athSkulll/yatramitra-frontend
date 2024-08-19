@@ -10,8 +10,8 @@ function convertTo12HourFormat(time24) {
     hours = hours % 12 || 12; // Convert 0 to 12 for midnight
     return `${hours}:${minutes} ${ampm}`;
 }
-const token = localStorage.getItem("token");
-const departureTrain = JSON.parse(localStorage.getItem("departure-train"));
+const token = Cookies.get("token");
+const departureTrain = JSON.parse(Cookies.get("departure-train"));
 var fare = 0;
 document.addEventListener('DOMContentLoaded', async function() {
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const passengers = parseInt(departureTrain.seats);
     fare = fare * passengers;
     tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
-    localStorage.setItem('fare', fare);
+    Cookies.set('fare', fare);
     document.getElementById('trip-summary').innerHTML = tripSummary;
     const passengersDiv = document.getElementById('passenger-details');
     for (var i = 0; i < passengers; i++) {
@@ -86,7 +86,7 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
     }
     
     localStorage.removeItem('departure-train');
-    const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     fetch('https://yatramitra-backend.onrender.com/payment/save', {
         method: 'POST',
         headers: {

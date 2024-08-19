@@ -9,22 +9,33 @@
     <link rel="stylesheet" href="../styles/footer.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 </head>
 <body>
     <header id="header"></header>
+    <div class="loader-wrapper" id = "loader-wrapper">
+        <video id = "loader" autoplay loop muted>
+          <source src="../assets/loader.webm" type="video/webm">
+          </video>
+      </div>
     <div class="ticket-container2">
     <div class="form-selection-buttons-wrapper">
         <div class="form-selection-buttons">
             <!-- Your buttons go here -->
-            <button class="transport-button flight-button">Flight</button>
+            <button class="transport-button flight-button clicked">Flight</button>
             <button class="transport-button train-button">Train</button>
             <button class="transport-button bus-button">Bus</button>
         </div>
     </div>
     <h2>Your Booked Tickets</h2>
     <div class="ticket-container">
+        <div id="flight-tickets" class="active">
+    
+    
+        </div>
+        <div id="train-tickets"></div>
+        <div id="bus-tickets"></div>
         
-
         <!-- Railway Ticket -->
         <!-- <div class="train ticket-card">
             <div class="ticket-info">
@@ -56,34 +67,7 @@
         </div> -->
 
         <!-- Flight Ticket -->
-        <div class="flight ticket-card ">
-            <div class="ticket">
-                <div class="ticket-header">
-                    <div class="ticket-number">PNR: {{pnr}}</div>
-                    <div class="ticket-class">{{class}}</div>
-                </div>
-                <div class="ticket-details">
-                    <div class="ticket-route">
-                        <span>{{source}} ({{departureID}})</span> → <span>{{destination}} ({{arrivalID}})</span>
-                    </div>
-                    <div class="ticket-time">
-                        <div>Departure: {{departureTime}}, {{departure}}</div>
-                        <div>Arrival: {{arrivalTime}}, {{arrival}}</div>
-                    </div>
-                    <div class="ticket-price">
-                        <span>Price: &#8377; {{price}}</span>
-                    </div>
-                </div>
-                <div class="ticket-passengers">
-                    <h3>Passengers</h3>
-                    <ul>
-                        {{#each passengers}}
-                        <li>{{this.name}}, Age: {{this.age}}</li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
         
     </div>
 </div>

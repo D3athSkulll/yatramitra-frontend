@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <style>
@@ -165,7 +166,7 @@
         card.mount('#card-element');
 
         // Retrieve and display the price from local storage
-        var price = localStorage.getItem('fare');
+        var price = Cookies.get('fare');
         document.getElementById('price').textContent = `Total Amount: ₹${price}`;
 
         var form = document.getElementById('payment-form');
@@ -198,7 +199,7 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            "Authorization": `Bearer ${localStorage.getItem('token')}`
+                            "Authorization": `Bearer ${Cookies.get('token')}`
                         },
                         body: JSON.stringify({
                             paymentID: result.paymentIntent.id

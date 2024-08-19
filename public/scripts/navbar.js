@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function() {
     // Check if the user is logged in (this is just a placeholder, replace it with your actual login check)
-    let isLoggedIn = localStorage.getItem("token");
+    let isLoggedIn = Cookies.get("token");
     // localStorage.removeItem("token");
     try {
     // Header HTML
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         isLoggedIn = false;
     }
 } catch (err) {
+    console.error(err);
     isLoggedIn = false;
 }
     if (isLoggedIn) {

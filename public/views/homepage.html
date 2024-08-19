@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
 
 </head>
 <body>
@@ -154,13 +156,11 @@
             </div>
             </div>
         </div>
+        
         <section id="ads-section">
-            <div class="ads-container flight-ads"id="flight-ads">
-    
-    
-    
-                
-                    <div class="ad-item">
+            <div class="carousel-container" id="flight-carousel">
+                <div class="carousel">
+                    <div class="ad-item active">
                         <img src="../assets/flightad1.png" alt="Flight Ad 1">
                     </div>
                     <div class="ad-item">
@@ -176,103 +176,200 @@
                         <img src="../assets/flightad5.png" alt="Flight Ad 5">
                     </div>
                     <div class="ad-item">
-                        <img src="../assets/flightad8.png" alt="Flight Ad 6">
+                        <img src="../assets/flightad6.png" alt="Flight Ad 6">
                     </div>
                     <div class="ad-item">
-                        <img src="../assets/flightad6.png" alt="Flight Ad 7">
+                        <img src="../assets/flightad8.png" alt="Flight Ad 7">
                     </div>
-                    
+                </div>
+                <button class="carousel-control prev" id="flightPrevBtn">&#10094;</button>
+                <button class="carousel-control next" id="flightNextBtn">&#10095;</button>
             </div>
-            <div class="ads-container hidden train-ads" id="train-ads">
-                <div class="ad-item">
-                    <img src="../assets/trainad1.png" alt="Train Ad 1">
-           
+            <div class="carousel-container hidden" id="train-carousel">
+                <div class="carousel">
+                    <div class="ad-item active">
+                        <img src="../assets/trainad1.png" alt="Train Ad 1">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad2.png" alt="Train Ad 2">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad3.png" alt="train Ad 3">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad4.png" alt="train Ad 4">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad5.png" alt="train Ad 5">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad6.png" alt="train Ad 6">
+                    </div>
                 </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad2.png" alt="Train Ad 2">
-           
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad3.png" alt="Train-Ad 2">     
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad4.png" alt="train-ad-4">
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad5.png" alt="train-ad-6">
-       
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad6.png" alt="train-ad-6">
-       
-                </div>
+                <button class="carousel-control prev" id="trainPrevBtn">&#10094;</button>
+                <button class="carousel-control next" id="trainNextBtn">&#10095;</button>
             </div>
-            <div class="ads-container hidden bus-ads" id="bus-ads">
-                <div class="ad-item">
-                    <img src="../assets/trainad1.png" alt="Train Ad 1">
-           
+            <div class="carousel-container hidden" id="bus-carousel">
+                <div class="carousel">
+                    <div class="ad-item active">
+                        <img src="../assets/trainad1.png" alt="Train Ad 1">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad2.png" alt="Train Ad 2">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad3.png" alt="train Ad 3">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad4.png" alt="train Ad 4">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad5.png" alt="train Ad 5">
+                    </div>
+                    <div class="ad-item">
+                        <img src="../assets/trainad6.png" alt="train Ad 6">
+                    </div>
                 </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad2.png" alt="Train Ad 2">
-           
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad3.png" alt="Train-Ad 2">     
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad4.png" alt="train-ad-4">
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad5.png" alt="train-ad-6">
-       
-                </div>
-                <div class="ad-item">
-                    <img src="../assets/trainad6.png" alt="train-ad-6">
-       
-                </div>
+                <button class="carousel-control prev" id="busPrevBtn">&#10094;</button>
+                <button class="carousel-control next" id="busNextBtn">&#10095;</button>
             </div>
-    
         </section>
-   
-   
+        <section id="travel-packages">
+            <div class="packages-intro">
+                <h2 class="section-heading">Explore Our Travel Packages</h2>
+                <p class="section-description">Discover our curated travel packages designed to provide you with unforgettable experiences. Whether you're seeking adventure, relaxation, or cultural immersion, we have something for everyone.</p>
+            </div>
+            <div class="packages-container">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('../assets/pkg1.png');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Exploring the Golden Triangle</h3>
+                        <p class="package-summary">Experience the rich culture and history of India's iconic Golden Triangle: Delhi, Agra, and Jaipur.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹30,000</span>
+                            <span class="package-duration">7 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://s3.india.com/travel/wp-content/uploads/2016/05/Goa-sunset-main.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Goa Beach Extravaganza</h3>
+                        <p class="package-summary">Enjoy the sun, sand, and sea with our luxurious beach vacation package in Goa.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹25,000</span>
+                            <span class="package-duration">5 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('../assets/pkg3.webp');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Kerala Backwaters Retreat</h3>
+                        <p class="package-summary">Relax and rejuvenate with a serene backwater cruise through Kerala's picturesque landscapes.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹40,000</span>
+                            <span class="package-duration">6 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 4 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://cdn.britannica.com/74/114874-050-6E04C88C/North-Face-Mount-Everest-Tibet-Autonomous-Region.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Himalayan Adventure</h3>
+                        <p class="package-summary">Embark on an exhilarating adventure through the majestic Himalayan mountains.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹50,000</span>
+                            <span class="package-duration">10 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 5 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://superbmytrip.com/Content/Holiday/GallaryImage/1542ce8c-5d03-48b6-aecb-c3fae1ad606c.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Rajasthan Royalty</h3>
+                        <p class="package-summary">Discover the royal heritage of Rajasthan with visits to majestic forts and palaces.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹35,000</span>
+                            <span class="package-duration">8 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 6 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://www.avemariyatravel.com/admin/include/upload/packages/64f8520a5e008SHORT%20ESCAPE.webp');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Andaman Island Escape</h3>
+                        <p class="package-summary">Explore the pristine beaches and crystal-clear waters of the Andaman Islands.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹45,000</span>
+                            <span class="package-duration">7 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 7 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://www.karnatakatourism.org/wp-content/uploads/2020/05/Mysore-Coorg-Tour-Package.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Mysore and Coorg Getaway</h3>
+                        <p class="package-summary">Enjoy a refreshing trip to Mysore and Coorg with scenic landscapes and heritage sites.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹28,000</span>
+                            <span class="package-duration">6 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 8 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('../assets/pkg4.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Mumbai City Tour</h3>
+                        <p class="package-summary">Explore the vibrant city of Mumbai, its landmarks, and cultural hotspots.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹20,000</span>
+                            <span class="package-duration">4 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 9 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://sundayguardianlive.com/wp-content/uploads/2019/02/P5.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Ganges Spiritual Journey</h3>
+                        <p class="package-summary">Immerse yourself in the spiritual beauty and tranquility of the Ganges River.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹32,000</span>
+                            <span class="package-duration">6 Days</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Package 10 -->
+                <div class="package-card">
+                    <div class="package-image" style="background-image: url('https://www.freetour.com/images/tours/4270/private-3day-jaipur-heritage-tour-01.jpg');"></div>
+                    <div class="package-details">
+                        <h3 class="package-title">Jaipur Heritage Walk</h3>
+                        <p class="package-summary">Discover the rich heritage and vibrant culture of Jaipur through a guided walking tour.</p>
+                        <div class="package-info">
+                            <span class="package-price">₹22,000</span>
+                            <span class="package-duration">5 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
    
    
    
    
     </section>     
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-row">
-                    <div class="footer-col">
-                        <h4>company</h4>
-                        <ul>
-                            <li><a href="./about.html">about us</a></li>
-                            <li><a href="#">our services</a></li>
-                            <li><a href="#">privacy policy</a></li>
-                            <li><a href="#">terms of service</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>get help</h4>
-                        <ul>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="./contact.html">contact us</a></li>
-                            <li><a href="#">cancellations & refunds</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-col">
-                        <h4>follow us</h4>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    &copy; 2024 YatraMitra. All rights reserved.
-                </div>
-            </div>
+        <footer class="footer" id="footer">
         </footer>
         
     </main>

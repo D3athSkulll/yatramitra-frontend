@@ -110,7 +110,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
       loaderContainer.classList.add("hidden");
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem("token", data.token) // Store the token in a cookie
+        Cookies.set("token", data.token) // Store the token in a cookie
         // Redirect to the desired page after successful login
         window.location.href = './homepage.html'; // Change this to your desired route
       } else {
@@ -149,7 +149,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        localStorage.setItem("token", data.token) // Store the token in a cookie
+        Cookies.set("token", data.token) // Store the token in a cookie
         window.location.href = './homepage.html'; // Change this to your desired route
         // Redirect to the desired page after successful registration // Change this to your desired route
       } else {

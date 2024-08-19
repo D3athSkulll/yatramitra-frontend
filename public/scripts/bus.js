@@ -10,8 +10,8 @@ function convertTo12HourFormat(time24) {
     hours = hours % 12 || 12; // Convert 0 to 12 for midnight
     return `${hours}:${minutes} ${ampm}`;
 }
-const token = localStorage.getItem("token");
-const departureBus = JSON.parse(localStorage.getItem("departure-bus"));
+const token = Cookies.get("token");
+const departureBus = JSON.parse(Cookies.get("departure-bus"));
 var departure = {};
 var arrivalBus= {};
 var fare = 0;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     departure = await departureBusData.json();
     departure.date = departureBus.departureDate;
     var fare = parseInt(departure.price);
-    const arrival = JSON.parse(localStorage.getItem('arrival-bus')) || null;
+    const arrival = JSON.parse(Cookies.get('arrival-bus')) || null;
     var tripSummary = "<h2> Trip Summary </h2><p> Bus Summary </p>";
     if (departure) {
         departure.flightTimes = convertTo12HourFormat(departure.departure_time) + " - " + convertTo12HourFormat(departure.arrival_time)
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const passengers = parseInt(departureBus.adults);
     fare = fare * passengers;
     tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
-    localStorage.setItem('fare', fare);
+    Cookies.set('fare', fare);
     document.getElementById('trip-summary').innerHTML = tripSummary;
     const passengersDiv = document.getElementById('passenger-details');
     for (var i = 0; i < passengers; i++) {
@@ -123,7 +123,7 @@ document.getElementById('passenger-form').addEventListener('submit', function(ev
     
     localStorage.removeItem('departure-bus');
     localStorage.removeItem('arrival-bus');
-    const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     fetch('https://yatramitra-backend.onrender.com/payment/save', {
         method: 'POST',
         headers: {

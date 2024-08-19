@@ -35,18 +35,18 @@ function calculateTravelTime(startDateString, endDateString) {
       const adults = document.getElementById('adults').value;
   
       // Save form data to localStorage
-      localStorage.setItem('formData', JSON.stringify({ origin, destination, departureDate, adults }));
+      Cookies.set('formData', JSON.stringify({ origin, destination, departureDate, adults }));
   
       // Navigate to the new page
       window.location.href = 'newPage.html';
   });
   */
-  const token = localStorage.getItem('token');
+  const token = Cookies.get('token');
   document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById("depart-date");
     const today = new Date().toISOString().split("T")[0];
       dateInput.setAttribute("min", today);
-      const formData = JSON.parse(localStorage.getItem('formData'));
+      const formData = JSON.parse(Cookies.get('formData'));
       if (formData) {
           document.getElementById('from').value = formData.origin;
           document.getElementById('to').value = formData.destination;
@@ -240,7 +240,7 @@ trainResults.addEventListener('click', (event) => {
               const trainDuration = trainInfo.querySelectorAll('.train-duration')[1].querySelector('span').textContent;
               const trainName = trainInfo.querySelector('.train-duration').querySelector('span').textContent;
               trainPrice = trainPrice.replace(/[^\d]/g, '');
-              localStorage.setItem('departure-train', JSON.stringify({ trainPrice, trainNumber, trainName, origin: data.origin,
+              Cookies.set('departure-train', JSON.stringify({ trainPrice, trainNumber, trainName, origin: data.origin,
                                                                          destination: data.destination, seats, departureDate, trainDuration }));
               
               window.location.href = './train-details.html';

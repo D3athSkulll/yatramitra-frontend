@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const form1 = document.getElementById('flight-form');
     const form2 = document.getElementById('train-form');
     const form3 = document.getElementById('bus-form');
-    const ad1 = document.getElementById('flight-ads');
-    const ad2 = document.getElementById('train-ads');
-    const ad3 = document.getElementById('bus-ads');
+    const ad1 = document.getElementById('flight-carousel');
+    const ad2 = document.getElementById('train-carousel');
+    const ad3 = document.getElementById('bus-carousel');
     const forms = [form1, form2, form3];
     const ads = [ad1, ad2, ad3];
     
@@ -35,21 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const outgoingForm = forms[currentFormIndex];
         const incomingForm = forms[targetIndex];
         
-        const direction = targetIndex > currentFormIndex ? 1 : -1;
 
         incomingForm.classList.remove('hidden');
-        incomingForm.style.transform = `rotateY(${direction * 180}deg)`;
-        setTimeout(() => {
-            outgoingForm.style.transform = `rotateY(${direction * -180}deg)`;
-            incomingForm.style.transform = `rotateY(0deg)`;
-
-            setTimeout(() => {
-                outgoingForm.classList.add('hidden');
-                outgoingForm.style.transform = '';
+        outgoingForm.classList.add('hidden');
                 currentFormIndex = targetIndex;
-                isAnimating = false;
-            }, 600);
-        }, 20);
     }
 
     function switchAds(targetIndex) {
@@ -60,11 +49,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentAdIndex = targetIndex;
     }
-
+    function nextAd(carouselId) {
+        const carousel = document.getElementById(carouselId).querySelector('.carousel');
+        const ads = carousel.querySelectorAll('.ad-item');
+        let currentIndex = Array.from(ads).findIndex(ad => ad.classList.contains('active'));
+    
+        ads[currentIndex].classList.remove('active');
+    
+        const nextIndex = (currentIndex + 1) % ads.length;
+    
+        ads[nextIndex].classList.add('active');
+    
+        carousel.style.transform = `translateX(-${nextIndex * 100}%)`;
+    }
+    function prevAd(carouselId) {
+        const carousel = document.getElementById(carouselId).querySelector('.carousel');
+        const ads = carousel.querySelectorAll('.ad-item');
+        let currentIndex = Array.from(ads).findIndex(ad => ad.classList.contains('active'));
+    
+        ads[currentIndex].classList.remove('active');
+    
+        const prevIndex = (currentIndex - 1 + ads.length) % ads.length;
+    
+        ads[prevIndex].classList.add('active');
+    
+        carousel.style.transform = `translateX(-${prevIndex * 100}%)`;
+    }
     // Initialize the first form and ads as visible
     switchForm(0);
     switchAds(0);
+    document.getElementById('flightPrevBtn').addEventListener('click', () => prevAd('flight-carousel'));
+    document.getElementById('flightNextBtn').addEventListener('click', () => nextAd('flight-carousel'));
 
+    document.getElementById('trainPrevBtn').addEventListener('click', () => prevAd('train-carousel'));
+    document.getElementById('trainNextBtn').addEventListener('click', () => nextAd('train-carousel'));
+
+    document.getElementById('busPrevBtn').addEventListener('click', () => prevAd('bus-carousel'));
+    document.getElementById('busNextBtn').addEventListener('click', () => nextAd('bus-carousel'));
     // Round Trip and One Way functionality
     var roundtripButton = document.querySelector("#flight-round-trip");
     var onewaytripButton = document.querySelector("#flight-one-way-trip");

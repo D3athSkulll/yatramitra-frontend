@@ -1,3 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    background-color: #f8f9fa; /* Background color for the footer */
+    padding: 1rem; /* Adjust padding as needed */
+}
+
+/* Optional: Ensure your main content area takes up available space */
+#departure-body, #arrival-body {
+    flex: 1; /* Allows the main content area to grow and take up space */
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;

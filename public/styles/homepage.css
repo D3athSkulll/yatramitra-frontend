@@ -369,36 +369,169 @@ header {
     font-size: 1.7rem;
 }
 
-/* Ads Section */
-.ads-section {
-    padding: 4rem 2rem;
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    max-width: 800px; /* Fixed width for the carousel */
+    margin: 2rem auto; /* Center horizontally */
+    overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
     background-color: #f8f9fa;
+    padding: 1rem; /* Padding to provide space for the buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
 }
 
-.ads-container {
-    margin-top: 10px;
+/* Carousel */
+.carousel {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    align-items: center;
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Ad Items */
+/* Ad Item */
 .ad-item {
-    width: calc(33.33% - 20px);
-    max-width: 300px;
-    height:fit-content ;
+    flex: 0 0 100%; /* Each ad item takes up 100% of the carousel width */
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
     text-align: center;
 }
 
+/* Ad Item Image */
 .ad-item img {
-    width: 100%;
-    height: 100%;
-    border-radius: 40px;
-    margin-bottom: 10px;
-    object-fit: cover;
+    width: 100%; /* Ensure image fits within its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 20px; /* Round the corners */
+    padding: 15px;
 }
+
+/* Active Ad Item */
+.ad-item.active {
+    opacity: 1;
+}
+
+/* Carousel Controls */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2; /* Ensure controls are above the carousel */
+    width: 25px; /* Adjust width of the button */
+    height: 25px; /* Adjust height of the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Previous Button */
+.carousel-control.prev {
+    left: 0.5rem; /* Adjust position to provide space from the edge */
+}
+
+/* Next Button */
+.carousel-control.next {
+    right: 0.5rem; /* Adjust position to provide space from the edge */
+}
+
+/* Hover Effect for Controls */
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+#travel-packages {
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+.packages-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.section-heading {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.section-description {
+    font-size: 1.125rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.packages-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.package-card {
+    position: relative;
+    width: calc(33.33% - 1rem);
+    max-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s;
+
+}
+.package-card:hover {
+    transform: scale(1.1);
+
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.package-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.package-details {
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.package-title {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #333;
+}
+
+.package-summary {
+    font-size: 1rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.package-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 1rem;
+}
+
+.package-price {
+    font-weight: bold;
+}
+
+.package-duration {
+    font-style: italic;
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
