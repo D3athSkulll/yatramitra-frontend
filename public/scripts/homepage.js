@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const ad3 = document.getElementById('bus-carousel');
     const forms = [form1, form2, form3];
     const ads = [ad1, ad2, ad3];
-    
+
     let currentFormIndex = 0;
     let currentAdIndex = 0;
-    let isAnimating = false;
 
     btnForm1.addEventListener('click', () => {
         switchForm(0);
@@ -29,55 +28,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function switchForm(targetIndex) {
-        if (isAnimating || targetIndex === currentFormIndex) return;
+        if (targetIndex === currentFormIndex) return;
 
-        isAnimating = true;
-        const outgoingForm = forms[currentFormIndex];
-        const incomingForm = forms[targetIndex];
-        
-
-        incomingForm.classList.remove('hidden');
-        outgoingForm.classList.add('hidden');
+        forms[currentFormIndex].classList.add('hidden');
+        forms[targetIndex].classList.remove('hidden');
         currentFormIndex = targetIndex;
     }
 
     function switchAds(targetIndex) {
-        // if (targetIndex === currentAdIndex) return;
-
         ads[currentAdIndex].classList.add('hidden');
         ads[targetIndex].classList.remove('hidden');
-
         currentAdIndex = targetIndex;
     }
+
     function nextAd(carouselId) {
         const carousel = document.getElementById(carouselId).querySelector('.carousel');
         const ads = carousel.querySelectorAll('.ad-item');
         let currentIndex = Array.from(ads).findIndex(ad => ad.classList.contains('active'));
-    
+
         ads[currentIndex].classList.remove('active');
-    
+
         const nextIndex = (currentIndex + 1) % ads.length;
-    
+
         ads[nextIndex].classList.add('active');
-    
+
         carousel.style.transform = `translateX(-${nextIndex * 100}%)`;
     }
+
     function prevAd(carouselId) {
         const carousel = document.getElementById(carouselId).querySelector('.carousel');
         const ads = carousel.querySelectorAll('.ad-item');
         let currentIndex = Array.from(ads).findIndex(ad => ad.classList.contains('active'));
-    
+
         ads[currentIndex].classList.remove('active');
-    
+
         const prevIndex = (currentIndex - 1 + ads.length) % ads.length;
-    
+
         ads[prevIndex].classList.add('active');
-    
+
         carousel.style.transform = `translateX(-${prevIndex * 100}%)`;
     }
+
     // Initialize the first form and ads as visible
-    switchForm(0);
-    switchAds(0);
+    forms.forEach((form, index) => {
+        if (index !== currentFormIndex) form.classList.add('hidden');
+    });
+    ads.forEach((ad, index) => {
+        if (index !== currentAdIndex) ad.classList.add('hidden');
+    });
+
     document.getElementById('flightPrevBtn').addEventListener('click', () => prevAd('flight-carousel'));
     document.getElementById('flightNextBtn').addEventListener('click', () => nextAd('flight-carousel'));
 
@@ -85,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('trainNextBtn').addEventListener('click', () => nextAd('train-carousel'));
 
     document.getElementById('busPrevBtn').addEventListener('click', () => prevAd('bus-carousel'));
+
     document.getElementById('busNextBtn').addEventListener('click', () => nextAd('bus-carousel'));
+
     // Round Trip and One Way functionality
     var roundtripButton = document.querySelector("#flight-round-trip");
     var onewaytripButton = document.querySelector("#flight-one-way-trip");
