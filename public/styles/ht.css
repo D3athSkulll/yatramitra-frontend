@@ -10,6 +10,7 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
+    margin-top: 90px;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -42,13 +43,14 @@ header a:hover {
 }
 
 main {
-    margin-top: 50px;
+    
     display: flex;
     justify-content: space-between;
     gap: 20px;
 }
 
 .form-section {
+    
     width: 60%;
 }
 
