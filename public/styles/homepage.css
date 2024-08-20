@@ -74,7 +74,6 @@ header {
 /* Button */
 .transport-button {
     backface-visibility: hidden;
-    margin-left:;
     border: 1px solid black;
     margin-bottom: 3px;
     background-color: transparent;

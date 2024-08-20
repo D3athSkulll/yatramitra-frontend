@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
     <link rel="stylesheet" href="../styles/ht.css">
-    
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <link rel="stylesheet" href="../styles/navbar.css" />
     <link rel="stylesheet" href="../styles/footer.css" />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
@@ -13,6 +15,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="nav-bar" id="header"></div>
         <header>
             <h1>Flight</h1>
         </header>
@@ -32,9 +35,7 @@
                     <div class="form-group" id="passenger-details">
                     </div>
                     <div class="form-group">
-                        <label for="contactNumber">Contact Details</label>
-                        <input type="tel" id="contactNumber" name="contactNumber" placeholder="Primary contact number">
-                        <input type="email" id="email" name="email" placeholder="Email">
+                        
                     </div>
                     <div class="form-group">
                         <button type="submit" id="submit-button">Next</button>

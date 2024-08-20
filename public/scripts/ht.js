@@ -76,15 +76,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <label for='female'>Female</label>
                 </div>
                 
-                <div class='form-group'>
                     <label for='fullName'>Name (As per government ID)</label>
                     <input type='text' id='fullName' name='fullName' placeholder='First and Middle Name'>
                     <input type='text' id='lastName' name='lastName' placeholder='Last Name'>
-                </div>
-                <div class='form-group'>
+            
                     <label for='dob'>Age</label>
                     <input type='number' id='age' name='dob'>
-                </div>
               `
         
         passengerDiv.innerHTML = ht;
