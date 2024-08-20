@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Add event listener for logout
     if (isLoggedIn) {
         document.getElementById("logout").addEventListener("click", function() {
-            localStorage.removeItem("token"); // Clear login status
-            location.reload(); // Reload the page to reflect changes
+            Cookies.remove("token"); // Clear login status
+            window.location.href='./homepage.html' // Reload the page to reflect changes
         });
     }
 
