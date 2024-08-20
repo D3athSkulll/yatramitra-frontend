@@ -34,6 +34,17 @@ Here’s a sample README file for your repository:
 3. Use the booking forms to reserve train, flight, or bus tickets.
 4. Proceed to checkout to complete payments via Stripe.
 
+## Screenshots
+Here are some screenshots of the Yatramitra website:
+![](./assets/image/ss1.png)
+![](./assets/image/ss2.png)
+![](./assets/image/ss3.png)
+![](./assets/image/ss4.png)
+![](./assets/image/ss5.png)
+![](./assets/image/ss6.png)
+![](./assets/image/ss7.png)
+![](./assets/image/ss8.png)
+![](./assets/image/ss9.png)
 ## Contributing
 
 1. Fork the repository.
