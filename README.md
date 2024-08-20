@@ -1,14 +1,18 @@
+Here’s a sample README file for your repository:
+
+---
+
 # Yatramitra Frontend
 
-Yatramitra is a travel website frontend built using vanilla HTML, CSS, and JavaScript. The website provides users with the ability to book train, flight, and bus tickets. It also integrates Stripe for secure payment processing and features various interactive elements for a seamless user experience.
+**Yatramitra** is a travel website frontend built using vanilla HTML, CSS, and JavaScript. The website provides users with the ability to book train, flight, and bus tickets. It also integrates Stripe for secure payment processing and features various interactive elements for a seamless user experience.
 
-# Features
+## Features
 
-- Booking System: Users can book train, flight, and bus tickets.
-- Payment Integration: Utilizes Stripe for secure payment transactions.
-- Dynamic Navbar: A responsive and interactive navigation bar.
-- Authentication: User authentication for personalized experience.
-- Homepage Video: An introductory video showcased on the homepage.
+- **Booking System:** Users can book train, flight, and bus tickets.
+- **Payment Integration:** Utilizes Stripe for secure payment transactions.
+- **Dynamic Navbar:** A responsive and interactive navigation bar.
+- **Authentication:** User authentication for personalized experience.
+- **Homepage Video:** An introductory video showcased on the homepage.
 - **Responsive Design:** Optimized for various devices and screen sizes.
 
 ## Installation
