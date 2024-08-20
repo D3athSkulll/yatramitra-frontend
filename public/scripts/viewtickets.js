@@ -66,7 +66,7 @@ window.addEventListener('load', async ()=>{
                     `
                     if (ticket.arrivalID)
                         airHTML+=`<div>Return Journey: ${formatDate(new Date(ticket.arrival))},  ${ticket.arrivalTime}</div>`
-                    airHTML+=`</div>
+                    airHTML+=`</div><br>
                     <div class="ticket-price">
                         <span>Price: &#8377; ${ticket.price}</span>
                     </div>
@@ -108,7 +108,7 @@ window.addEventListener('load', async ()=>{
                         <div>Departure Journey: ${formatDate(new Date(ticket.departure))},  ${ticket.departureTime}</div>
                     `
                     trainHTML+=`</div>
-                    <div class="ticket-price">
+                    <div class="ticket-price"><br>
                         <span>Price: &#8377; ${ticket.price}</span>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ window.addEventListener('load', async ()=>{
                     if (ticket.arrivalID)
                         busHTML+=`<div>Return Journey: ${formatDate(new Date(ticket.arrival))},  ${ticket.arrivalTime}</div>`
                     busHTML+=`</div>
-                    <div class="ticket-price">
+                    <div class="ticket-price"><br>
                         <span>Price: &#8377; ${ticket.price}</span>
                     </div>
                 </div>
