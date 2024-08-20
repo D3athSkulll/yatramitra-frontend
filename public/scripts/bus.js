@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         tripSummary += "<p> Bus " + departure.bus_number + " | " + departure.flightTimes + " | Non-Stop </p>";
 
     }
-    if (arrival){
+    if (arrival.ID){
         const arrivalBusData = await fetch(`https://yatramitra-backend.onrender.com/api/bus/busData/${arrival.ID}`,{
             headers:{
                 "Authorization" : `Bearer ${token}`

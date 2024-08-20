@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         tripSummary += "<p> Check-in: <strong> BAG | Handbag up to 7KG </strong></p><br>";
 
     }
-    if (arrival){
+    if (arrival.ID){
         const arrivalFlightData = await fetch(`https://yatramitra-backend.onrender.com/api/flight/flightData/${arrival.ID}`,{
             headers:{
                 "Authorization" : `Bearer ${token}`
