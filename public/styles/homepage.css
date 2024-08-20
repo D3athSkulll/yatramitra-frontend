@@ -79,7 +79,7 @@ header {
     background-color: transparent;
     border: 0;
     border-radius: .375rem;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensures padding and border are within the element's dimensions */
     color: black;
     cursor: pointer;
     display: inline-block;
@@ -131,11 +131,14 @@ header {
     outline: 0 solid transparent;
 }
 
-.transport-button:not(:disabled):active {
+.transport-button:active, 
+.selected {
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
     border-radius: 20px;
     color: white;
     transform: translateY(.125rem);
+    box-sizing: border-box; /* Ensures padding and border are within the element's dimensions */
+    outline: none; /* Remove any default focus outline */
 }
 
 /* Search box part */
@@ -163,7 +166,7 @@ header {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    
+    padding: 10px 10px;
     background-color: white;
     border-radius: 20px;
 }
@@ -305,7 +308,52 @@ header {
     background-color: white;
     margin-top: 0px;
 }
+/* Suggestions Box Styling */
+.suggestions {
+    position: absolute;
+    display: none; /* Hide the suggestions container by default */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Match the border-radius of your input boxes */
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    top: 100%; /* Position it just below the input field */
+    left: 0;
+    padding: 0.5em; /* Add padding for a consistent look */
+    box-sizing: border-box; /* Ensure padding is included within the element's dimensions */
+    font-family: Arial, sans-serif; /* Match font family */
+}
 
+/* Styling for each suggestion item */
+.suggestions div {
+    padding: 0.5em; /* Match the padding of your input boxes */
+    border-bottom: 1px solid #ccc; /* Add a bottom border to separate suggestions */
+    cursor: pointer;
+    font-size: 1rem; /* Match the font size of your input boxes */
+}
+
+/* Hover effect for suggestion items */
+.suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+/* Highlighting the selected suggestion */
+.suggestions .selected {
+    background-color: #e0e0e0;
+}
+
+/* Remove border from the last suggestion to avoid double borders */
+.suggestions div:last-child {
+    border-bottom: none;
+}
+
+/* Ensure the suggestions container is not overlapped by other elements */
+.search-field {
+    position: relative;
+}
 @media (max-width: 767px) {
     .form-outer {
         width: 90%;

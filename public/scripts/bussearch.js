@@ -26,38 +26,30 @@ window.addEventListener('load', function() {
   }
   var depDate;
   var aDate;
-  /* ON THE MAIN PAGE
-  document.getElementById('oldForm').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const origin = document.getElementById('from').value;
-      const destination = document.getElementById('to').value;
-      const departureDate = document.getElementById('depart-date').value;
-      const adults = document.getElementById('adults').value;
-  
-      // Save form data to localStorage
-      Cookies.set('formData', JSON.stringify({ origin, destination, departureDate, adults }));
-  
-      // Navigate to the new page
-      window.location.href = 'newPage.html';
-  });
-  */
+
   const token = Cookies.get("token");
   console.log(token);
   document.addEventListener('DOMContentLoaded', () => {
-    const dateInput = document.getElementById("depart-date");
-    const today = new Date().toISOString().split("T")[0];
-    document.getElementById('return-date').setAttribute("min", today);
-      dateInput.setAttribute("min", today);
-      const formData = JSON.parse(Cookies.get('formData'));
-      if (formData) {
-          document.getElementById('from').value = formData.origin;
-          document.getElementById('to').value = formData.destination;
-          document.getElementById('depart-date').value = formData.departureDate;
-          document.getElementById('adults').value = formData.adults;
+    // Load data from cookie
+    const formData = JSON.parse(Cookies.get('formData') || "{}");
+    console.log(formData)
+    if (formData.origin) {
+      document.getElementById('from').value = formData.origin;
+      document.getElementById('to').value = formData.destination;
+      document.getElementById('depart-date').value = formData.departureDate;
+      document.getElementById('adults').value = formData.adults;
+      document.getElementById("trip-type").value = "One Way";
   
-          // Optionally, submit the form automatically
-          document.getElementById('searchForm').submit();
+      if (formData.arrival) {
+        document.getElementById("trip-type").value = "Round Trip";
+        document.getElementById('return-date').disabled = false;
+        document.getElementById('return-date').value = formData.arrival;
       }
+      Cookies.remove('formData');
+      // Optionally, simulate a click event or submit the form
+      document.getElementById('searchButton').click();
+      
+    }
   });
   document.getElementById('depart-date').addEventListener('change', (event) => {
     document.getElementById('return-date').setAttribute("min", document.getElementById('depart-date').value);
@@ -162,6 +154,10 @@ window.addEventListener('load', function() {
       const departureDate = document.getElementById('depart-date').value;
       var returnDate = document.getElementById('return-date').value;
       if (returnDate == "") returnDate = undefined;
+      if(departureDate=="" || origin=="" || destination==""){
+        alert("Please fill all the fields");
+        return;
+      }
       depDate = departureDate;
       aDate = returnDate;
       const adults = document.getElementById('adults').value;
@@ -211,12 +207,12 @@ window.addEventListener('load', function() {
             <div class="flight-info">
               <div class="flight-details">
                   <div class="flight-times">
-                      <span style="font-size: 14px; color: #ccc;">${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
-                      <span style="font-size: 14px; color: #ccc;">${flight.bus_number}</span>
+                      <span style="font-size: 14px; color: #171616;">${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
+                      <span style="font-size: 14px; color: #171616;">${flight.bus_number}</span>
                   </div>
                   <div class="flight-duration">
-                      <span style="font-size: 14px; color: #ccc;"> ${calculateTravelTime(flight.travel_time)}</span>
-                      <span style="font-size: 14px; color: #ccc;">${data.origin}-${data.destination}</span>
+                      <span style="font-size: 14px; color: #171616;"> ${calculateTravelTime(flight.travel_time)}</span>
+                      <span style="font-size: 14px; color: #171616;">${data.origin}-${data.destination}</span>
   
                   </div>
                   <div class="flight-type">
@@ -282,12 +278,12 @@ window.addEventListener('load', function() {
         <div class="flight-info">
         <div class="flight-details">
             <div class="flight-times">
-                <span style="font-size: 14px; color: #ccc;">${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
-                <span style="font-size: 14px; color: #ccc;">${flight.bus_number}</span>
+                <span style="font-size: 14px; color: #171616;">${calculateTime(flight.departure_time)} – ${calculateTime(flight.arrival_time)}</span>
+                <span style="font-size: 14px; color: #171616;">${flight.bus_number}</span>
             </div>
             <div class="flight-duration">
                 <span> ${calculateTravelTime(flight.travel_time)}</span>
-                <span style="font-size: 14px; color: #ccc;">${data.destination}-${data.origin}</span>
+                <span style="font-size: 14px; color: #171616;">${data.destination}-${data.origin}</span>
   
             </div>
             <div class="flight-type">

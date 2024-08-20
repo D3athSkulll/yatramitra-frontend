@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     <div class="footer-container">
                 <div class="footer-row">
                     <div class="footer-col">
-                        <h4>company</h4>
+                        <h4>YatraMitra</h4>
                         <ul>
                             <li><a href="../views/about.html">about us</a></li>
                             <li><a href="../views/services.html">our services</a></li>
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <div class="footer-col">
                         <h4>follow us</h4>
                         <div class="social-links">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/D3athSkulll/yatramitra-frontend"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/D3athSkulll/yatramitra-backend"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>

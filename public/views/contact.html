@@ -17,9 +17,15 @@
 <body>
     <div class="nav-bar" id="header">
     </div>
+    <div class="loader-wrapper" id = "loader-wrapper">
+        <video id = "loader" autoplay loop muted>
+          <source src="../assets/loader.webm" type="video/webm">
+          </video>
+      </div>
     <div class="contact">
     <div class="contact_us_green">
         <div class="contact-container">
+            <form id="contact-form">
             <div class="contact-form">
                 <div class="form-row">
                     <div class="form-group">
@@ -47,6 +53,7 @@
                 </div>
                 <button type="submit">Submit</button>
             </div>
+        </form>
             <div class="contact-info">
                 <h2>Contact us</h2>
                 <p><i class="fas fa-phone-alt"></i>1 (234) 567-891</p>
@@ -65,4 +72,5 @@
     <footer class="footer" id="footer">
 </body>
 <script src="../scripts/navbar.js" defer></script>
+<script src="../scripts/contact.js"></script>
 </html>

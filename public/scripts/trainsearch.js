@@ -26,37 +26,31 @@ function calculateTravelTime(startDateString, endDateString) {
   return `${diffHrs} hr ${diffMins} min`;
 }
 
-  /* ON THE MAIN PAGE
-  document.getElementById('oldForm').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const origin = document.getElementById('from').value;
-      const destination = document.getElementById('to').value;
-      const departureDate = document.getElementById('depart-date').value;
-      const adults = document.getElementById('adults').value;
-  
-      // Save form data to localStorage
-      Cookies.set('formData', JSON.stringify({ origin, destination, departureDate, adults }));
-  
-      // Navigate to the new page
-      window.location.href = 'newPage.html';
-  });
-  */
+
   const token = Cookies.get('token');
   document.addEventListener('DOMContentLoaded', () => {
-    const dateInput = document.getElementById("depart-date");
-    const today = new Date().toISOString().split("T")[0];
-      dateInput.setAttribute("min", today);
-      const formData = JSON.parse(Cookies.get('formData'));
-      if (formData) {
-          document.getElementById('from').value = formData.origin;
-          document.getElementById('to').value = formData.destination;
-          document.getElementById('depart-date').value = formData.departureDate;
-          document.getElementById('adults').value = formData.adults;
+    // Load data from cookie
+    const formData = JSON.parse(Cookies.get('formData') || "{}");
+    console.log(formData)
+    if (formData.origin) {
+      document.getElementById('from').value = formData.origin;
+      document.getElementById('to').value = formData.destination;
+      document.getElementById('depart-date').value = formData.departureDate;
+      document.getElementById('adults').value = formData.adults;
+      document.getElementById("trip-type").value = "One Way";
   
-          // Optionally, submit the form automatically
-          document.getElementById('searchForm').submit();
+      if (formData.arrival) {
+        document.getElementById("trip-type").value = "Round Trip";
+        document.getElementById('return-date').disabled = false;
+        document.getElementById('return-date').value = formData.arrival;
       }
+  
+      Cookies.remove('formData');
+      document.getElementById('searchButton').click();
+      
+    }
   });
+  
   const selectElement = document.getElementById('trip-type');
   selectElement.addEventListener('change', (event) => {
       const value = event.target.value;
@@ -156,6 +150,10 @@ function calculateTravelTime(startDateString, endDateString) {
       const destination = document.getElementById('to').value;
       const departureDate = document.getElementById('depart-date').value;
       seats = document.getElementById('adults').value;
+      if(departureDate=="" || origin=="" || destination==""){
+        alert("Please fill all the fields");
+        return;
+      }
       console.log({ origin, destination, departureDate,  seats });
       try {
         const loaderContainer = document.getElementById('loader-wrapper');
@@ -203,18 +201,18 @@ function calculateTravelTime(startDateString, endDateString) {
 
     <div class="train-details">
         <div class="train-times">
-            <span style="font-size: 14px; color: #ccc;">${train.trainNumber}</span>
+            <span style="font-size: 14px; color: #171616;;">${train.trainNumber}</span>
 
         </div>
         <div class="train-duration">
-          <span style="font-size: 14px; color: #ccc;">${train.trainName}</span>
-          <span style="font-size: 14px; color: #ccc;">${train.departureStation}-${train.arrivalStation}</span>
+          <span style="font-size: 14px; color: #171616;;">${train.trainName}</span>
+          <span style="font-size: 14px; color: #171616;;">${train.departureStation}-${train.arrivalStation}</span>
 
       </div>
 
         <div class="train-duration">
-          <span style="font-size: 14px; color: #ccc;">${calculateTime(train.departureTime)} - ${calculateTime(train.arrivalTime)}</span>
-          <span style="font-size: 14px; color: #ccc;">${calculateTravelTime(train.departureTime, train.arrivalTime)}</span>
+          <span style="font-size: 14px; color: #171616;;">${calculateTime(train.departureTime)} - ${calculateTime(train.arrivalTime)}</span>
+          <span style="font-size: 14px; color: #171616;;">${calculateTravelTime(train.departureTime, train.arrivalTime)}</span>
 
         </div>
 

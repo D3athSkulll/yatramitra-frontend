@@ -35,7 +35,7 @@
       
         <div class="search-part">
             <div class="form-selection-buttons">
-                <button class="transport-button"  id="flight-button">Flight</button>
+                <button class="transport-button selected"  id="flight-button">Flight</button>
                 <button class="transport-button"  id="train-button">Train</button>
                 <button class="transport-button"  id="bus-button">Bus</button>
             </div>
@@ -56,13 +56,15 @@
                         <div class="form-section">
                             <label for="flight-from">Departure</label>
                             <div class="input-container">
-                                <input type="text" id="flight-from" name="from" placeholder="Departure Airport">
+                                <input type="text" id="flight-from" name="from" placeholder="Departure Airport" autocomplete="off">
+                                <div id="suggestions-flight-1" class="suggestions"></div>
                             </div>
                         </div>
                         <div class="form-section">
                             <label for="flight-to">Arrival</label>
                             <div class="input-container">
                                 <input type="text" id="flight-to" name="to" placeholder="Arrival Airport">
+                                <div id="suggestions-flight-2" class="suggestions"></div>
                             </div>
                         </div>
                         <div class="form-section">
@@ -80,18 +82,30 @@
                         <button type="submit" id="flight-buttonSubmit">Search Journey</button>
                     </div>
                 </div>
-                <div class="form hidden" id="train-form" >
+                <div class="form" id="train-form">
+                    <div class="form-top">
+                        <div class="trip-type-select">
+                            <label for="flight-round-trip">One Way</label>
+                            <input type="radio" name="flight-trip" id="flight-one-way-trip" checked disabled>
+                        </div>
+                        <div class="trip-type-select">
+                            <label for="flight-round-trip">Round Trip</label>
+                            <input type="radio" name="flight-trip" id="flight-round-trip" disabled>
+                        </div>
+                    </div>
                     <div class="booking-form">
                         <div class="form-section">
                             <label for="flight-from">Departure</label>
                             <div class="input-container">
                                 <input type="text" id="train-from" name="from" placeholder="Departure Station">
+                                <div id="suggestions-train-1" class="suggestions"></div>
                             </div>
                         </div>
                         <div class="form-section">
                             <label for="flight-to">Arrival</label>
                             <div class="input-container">
                                 <input type="text" id="train-to" name="to" placeholder="Arrival Station">
+                                <div id="suggestions-train-2" class="suggestions"></div>
                             </div>
                         </div>
                         <div class="form-section">
@@ -101,28 +115,23 @@
                             </div>
                         </div>
                         <div class="form-section" id="flight-arrival-div">
-                            <label for="class-selection">Class Selection</label>
+                            <label for="flight-arrival-date">Arrival Date</label>
                             <div class="input-container">
-                                <select name="class-selection" id="class-selection">
-                                    <option value="1AC">1AC</option>
-                                    <option value="2AC">2AC</option>
-                                    <option value="3AC">3AC</option>
-                                    <option value="sleeper">SLEEPER</option>
-                                </select>
+                                <input type="text" name="arrival-date" id="train-arrival-date" value="NOT AVAILABLE" disabled>
                             </div>
                         </div>
                         <button type="submit" id="train-buttonSubmit">Search Journey</button>
                     </div>
                 </div>
-                <div class="form hidden" id="bus-form" >
+                <div class="form" id="bus-form">
                     <div class="form-top">
-                        <div>
-                            <label for="flight-one-way-trip">One Way</label>
-                            <input type="radio" name="flight-trip" id="bus-one-way-trip" checked>
+                        <div class="trip-type-select">
+                            <label for="bus-round-trip">One Way</label>
+                            <input type="radio" name="bus-trip" id="bus-one-way-trip" checked>
                         </div>
-                        <div>
-                            <label for="flight-round-trip">Round Trip</label>
-                            <input type="radio" name="flight-trip" id="bus-round-trip">
+                        <div class="trip-type-select">
+                            <label for="bus-round-trip">Round Trip</label>
+                            <input type="radio" name="bus-trip" id="bus-round-trip">
                         </div>
                     </div>
                     <div class="booking-form">
@@ -130,12 +139,14 @@
                             <label for="flight-from">Departure</label>
                             <div class="input-container">
                                 <input type="text" id="bus-from" name="from" placeholder="Departure City">
+                                <div id="suggestions-bus-1" class="suggestions"></div>
                             </div>
                         </div>
                         <div class="form-section">
                             <label for="flight-to">Arrival</label>
                             <div class="input-container">
                                 <input type="text" id="bus-to" name="to" placeholder="Arrival City">
+                                <div id="suggestions-bus-2" class="suggestions"></div>
                             </div>
                         </div>
                         <div class="form-section">
@@ -415,12 +426,13 @@
             
         </section>
         <section id="app-image">
-            <div class="packages-intro">
-                <h2 class="section-heading">Download our App</h2>
-                <p class="section-description">Plan your trips, book tickets, and explore the world with just a tap.
-                    <br>Available on the App Store and Google Play.</p>
-            </div>
+           
             <div class="carousel-container app-container">
+                <div class="packages-intro">
+                    <h2 class="section-heading">Download our App</h2>
+                    <p class="section-description">Plan your trips, book tickets, and explore the world with just a tap.
+                        <br>Available on the App Store and Google Play.</p>
+                </div>
                 <div class="ad-item active app-img">
                     <img src="../assets/AppLogo.png" alt="">
                 </div>

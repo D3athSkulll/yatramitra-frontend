@@ -15,18 +15,27 @@
   </head>
 
   <body>
-    <div class="nav-bar" id="header">
-    </div>
-    
     <header>
       <nav>
-        <div class="nav-bar" id="header"></div>
+        <div class="nav-bar" id="header">
+        </div>
         <div class="flight-navbar">
           <form id="searchForm">
             <div class="search-header">
               <div class="search-field">
+                <label for="trip-type">Trip</label>
+                <select id="trip-type">
+                  <option>One Way</option>
+                </select>
+              </div>
+              <div class="search-field">
                 <label for="from">From</label>
-                <input type="text" id="from" placeholder="" autocomplete="on" />
+                <input
+                  type="text"
+                  id="from"
+                  placeholder=""
+                  autocomplete="off"
+                />
                 <div id="suggestions" class="suggestions"></div>
               </div>
               <button class="swap-button">⇄</button>
@@ -39,21 +48,15 @@
                 <label for="depart-date">Departure Date</label>
                 <input type="date" id="depart-date" value="" />
               </div>
-              <div class="search-field">
-                <label for="trip-type">Trip</label>
-                <select id="trip-type">
-                  <option>General</option>
-                  <option>Sleeper</option>
-                  <option>3AC</option>
-                  <option>2AC</option>
-                  <option>1AC</option>
-                </select>
+              <div class="search-field date-field">
+                <label for="return-date">Return Date</label>
+                <input type="text" id="return-date" placeholder="NOT AVAILABLE" disabled />
               </div>
               <div class="search-field adults-count" id="adults-count">
                 <label for="passenger">Passengers</label>
                 <input type="number" id="adults" value="1" min="1" max="10" />
               </div>
-              <button class="modify-button" type="submit">Modify Search</button>
+              <button class="modify-button" id="searchButton" type="submit">Modify Search</button>
             </div>
           </form>
         </div>
