@@ -36,15 +36,15 @@ Here’s a sample README file for your repository:
 
 ## Screenshots
 Here are some screenshots of the Yatramitra website:
-![ss1](./assets/image/ss1.png)
-![ss2](./assets/image/ss2.png)
-![ss3](./assets/image/ss3.png)
-![ss4](./assets/image/ss4.png)
-![ss5](./assets/image/ss5.png)
-![ss6](./assets/image/ss6.png)
-![ss7](./assets/image/ss7.png)
-![ss8](./assets/image/ss8.png)
-![ss9](./assets/image/ss9.png)
+![ss1](./assets/ss1.png)
+![ss2](./assets/ss2.png)
+![ss3](./assets/ss3.png)
+![ss4](./assets/ss4.png)
+![ss5](./assets/ss5.png)
+![ss6](./assets/ss6.png)
+![ss7](./assets/ss7.png)
+![ss8](./assets/ss8.png)
+![ss9](./assets/ss9.png)
 ## Contributing
 
 1. Fork the repository.
