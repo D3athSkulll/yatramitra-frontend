@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     departure = await departureFlightData.json();
     departure.date = departureFlight.departureDate;
     var fare = parseInt(departure.price);
-    const arrival = JSON.parse(Cookies.get('arrival-flight')) || null;
+    const arrival = JSON.parse(Cookies.get('arrival-flight') || {}) || null;
     var tripSummary = "<h2> Trip Summary </h2><p> Flight Summary </p>";
     if (departure) {
         departure.flightTimes = convertTo12HourFormat(departure.departure_time) + " - " + convertTo12HourFormat(departure.arrival_time)
