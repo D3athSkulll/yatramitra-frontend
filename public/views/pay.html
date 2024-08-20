@@ -191,6 +191,14 @@
                     line1: document.getElementById('address').value
                 }
             };
+            Cookies.remove("form-data");
+            Cookies.remove("fare");
+            Cookies.remove('arrival-bus');
+            Cookies.remove('departure-bus');
+            Cookies.remove('arrival-train');
+            Cookies.remove('departure-train');
+            Cookies.remove('arrival-flight');
+            Cookies.remove('departure-flight');
             try {
                 stripe.confirmCardPayment(uniqueID, {
                     payment_method: {
@@ -217,7 +225,6 @@
                     } else {
                         window.location.href = "./success.html";
                         
-                        // Handle successful payment here
                     }
                 });
             } catch (error) {
