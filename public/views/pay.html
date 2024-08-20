@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <style>
@@ -113,6 +115,8 @@
 </head>
 
 <body>
+    <div class="nav-bar" id="header">
+    </div>
     <!-- Loader Wrapper -->
     <div class="loader-wrapper" id="loader-wrapper">
         <video id="loader" autoplay loop muted>
@@ -142,6 +146,7 @@
             <button type="submit">Pay Now</button>
         </form>
     </div>
+    
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
@@ -195,7 +200,7 @@
                         billing_details: billingDetails,
                     },
                 }).then(async function (result) {
-                    await fetch('http://localhost:3000/payment/data',{
+                    await fetch('https://yatramitra-backend.onrender.com/payment/data',{
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -206,13 +211,14 @@
                         }),
                     }).catch((error) => {
                         console.error('Error:', error);
-                        window.locatioin.href="./failed.html";
+                        window.location.href="./failed.html";
                     });
                     loaderWrapper.style.visibility = 'hidden'; // Hide the loader
                     if (result.error) {
                         window.location.href = "./failed.html";
                     } else {
                         window.location.href = "./success.html";
+                        
                         // Handle successful payment here
                     }
                 });
@@ -223,6 +229,8 @@
             }
         });
     </script>
+    <footer class="footer" id="footer"></footer>
 </body>
+<script src="../scripts/navbar.js"></script>
 
 </html>

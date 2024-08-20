@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     const passengers = parseInt(departureFlight.adults);
+    console.log(passengers);
     fare = fare * passengers;
     tripSummary += "<p> Total Fare: <strong>₹" + fare + "</strong></p>";
     Cookies.set('fare', fare);

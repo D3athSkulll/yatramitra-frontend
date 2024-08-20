@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
     <link rel="stylesheet" href="../styles/ht.css">
+    
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
 </head>
@@ -13,7 +16,11 @@
         <header>
             <h1>Flight</h1>
         </header>
+        
         <main>
+            <div class="nav-bar" id="header">
+            </div>
+            
             <div class="loader-wrapper" id = "loader-wrapper">
                 <video id = "loader" autoplay loop muted>
                   <source src="../assets/loader.webm" type="video/webm">
@@ -38,6 +45,12 @@
             </aside>
         </main>
     </div>
-    <script src="../scripts/ht.js"></script>
+
+    <footer class="footer" id="footer"></footer>
+    
 </body>
+
+<script src="../scripts/ht.js"></script>
+    
+  <script src="../scripts/navbar.js" defer></script>
 </html>
