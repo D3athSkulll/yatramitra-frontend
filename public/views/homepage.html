@@ -10,7 +10,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-
+    <script defer>
+        window.addEventListener('load', function() {
+            const video = document.getElementById('myVideo');
+            video.src = "../assets/title-video.mp4";
+        });
+    </script>
 
 </head>
 <body>
@@ -21,8 +26,7 @@
         
         <section class="hero-section">
         <div class="overlay"></div>
-        <video autoplay loop muted plays-inline>
-            <source src="../assets/title-video.mp4">
+        <video id ="myVideo" autoplay loop muted plays-inline>
         </video>
         <div class="hero-content">
             <h1 class="hero-title">Welcome to Yatramitra</h1>
@@ -259,7 +263,7 @@
             <div class="packages-container">
                 <!-- Package 1 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('../assets/pkg1.png');"></div>
+                    <div class="package-image" style="background-image: url('../assets/pkg1.png');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Exploring the Golden Triangle</h3>
                         <p class="package-summary">Experience the rich culture and history of India's iconic Golden Triangle: Delhi, Agra, and Jaipur.</p>
@@ -271,7 +275,7 @@
                 </div>
                 <!-- Package 2 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://s3.india.com/travel/wp-content/uploads/2016/05/Goa-sunset-main.jpg');"></div>
+                    <div class="package-image" style="background-image: url('https://s3.india.com/travel/wp-content/uploads/2016/05/Goa-sunset-main.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Goa Beach Extravaganza</h3>
                         <p class="package-summary">Enjoy the sun, sand, and sea with our luxurious beach vacation package in Goa.</p>
@@ -283,7 +287,7 @@
                 </div>
                 <!-- Package 3 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('../assets/pkg3.png');"></div>
+                    <div class="package-image" style="background-image: url('../assets/pkg3.png');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Kerala Backwaters Retreat</h3>
                         <p class="package-summary">Relax and rejuvenate with a serene backwater cruise through Kerala's picturesque landscapes.</p>
@@ -295,7 +299,7 @@
                 </div>
                 <!-- Package 4 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://cdn.britannica.com/74/114874-050-6E04C88C/North-Face-Mount-Everest-Tibet-Autonomous-Region.jpg');"></div>
+                    <div class="package-image" style="background-image: url('https://cdn.britannica.com/74/114874-050-6E04C88C/North-Face-Mount-Everest-Tibet-Autonomous-Region.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Himalayan Adventure</h3>
                         <p class="package-summary">Embark on an exhilarating adventure through the majestic Himalayan mountains.</p>
@@ -307,7 +311,7 @@
                 </div>
                 <!-- Package 5 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://superbmytrip.com/Content/Holiday/GallaryImage/1542ce8c-5d03-48b6-aecb-c3fae1ad606c.jpg');"></div>
+                    <div class="package-image" style="background-image: url('https://superbmytrip.com/Content/Holiday/GallaryImage/1542ce8c-5d03-48b6-aecb-c3fae1ad606c.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Rajasthan Royalty</h3>
                         <p class="package-summary">Discover the royal heritage of Rajasthan with visits to majestic forts and palaces.</p>
@@ -319,7 +323,7 @@
                 </div>
                 <!-- Package 6 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://www.avemariyatravel.com/admin/include/upload/packages/64f8520a5e008SHORT%20ESCAPE.webp');"></div>
+                    <div class="package-image" style="background-image: url('https://www.avemariyatravel.com/admin/include/upload/packages/64f8520a5e008SHORT%20ESCAPE.webp');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Andaman Island Escape</h3>
                         <p class="package-summary">Explore the pristine beaches and crystal-clear waters of the Andaman Islands.</p>
@@ -331,7 +335,7 @@
                 </div>
                 <!-- Package 7 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://www.karnatakatourism.org/wp-content/uploads/2020/05/Mysore-Coorg-Tour-Package.jpg');"></div>
+                    <div class="package-image" style="background-image: url('https://www.karnatakatourism.org/wp-content/uploads/2020/05/Mysore-Coorg-Tour-Package.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Mysore and Coorg Getaway</h3>
                         <p class="package-summary">Enjoy a refreshing trip to Mysore and Coorg with scenic landscapes and heritage sites.</p>
@@ -343,7 +347,7 @@
                 </div>
                 <!-- Package 8 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('../assets/pkg4.jpg');"></div>
+                    <div class="package-image" style="background-image: url('../assets/pkg4.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Mumbai City Tour</h3>
                         <p class="package-summary">Explore the vibrant city of Mumbai, its landmarks, and cultural hotspots.</p>
@@ -355,7 +359,7 @@
                 </div>
                 <!-- Package 9 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://sundayguardianlive.com/wp-content/uploads/2019/02/P5.jpg');"></div>
+                    <div class="package-image" style="background-image: url('https://sundayguardianlive.com/wp-content/uploads/2019/02/P5.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Ganges Spiritual Journey</h3>
                         <p class="package-summary">Immerse yourself in the spiritual beauty and tranquility of the Ganges River.</p>
@@ -367,7 +371,7 @@
                 </div>
                 <!-- Package 10 -->
                 <div class="package-card">
-                    <div class="package-image" style="background-image: url('https://www.freetour.com/images/tours/4270/private-3day-jaipur-heritage-tour-01.jpg');"></div>
+                    <div class="package-image" style="background-image: url('https://www.freetour.com/images/tours/4270/private-3day-jaipur-heritage-tour-01.jpg');" loading="lazy"></div>
                     <div class="package-details">
                         <h3 class="package-title">Jaipur Heritage Walk</h3>
                         <p class="package-summary">Discover the rich heritage and vibrant culture of Jaipur through a guided walking tour.</p>
