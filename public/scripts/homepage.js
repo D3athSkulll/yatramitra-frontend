@@ -103,3 +103,36 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector("#flight-arrival-date").value = "SELECT ROUND TRIP";
     });
 });
+
+
+
+const gpCarousel = document.querySelector('.gp-carousel');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+gpCarousel.addEventListener('mousedown', (e) => {
+    isDown = true;
+    gpCarousel.classList.add('active');
+    startX = e.pageX - gpCarousel.offsetLeft;
+    scrollLeft = gpCarousel.scrollLeft;
+});
+
+gpCarousel.addEventListener('mouseleave', () => {
+    isDown = false;
+    gpCarousel.classList.remove('active');
+});
+
+gpCarousel.addEventListener('mouseup', () => {
+    isDown = false;
+    gpCarousel.classList.remove('active');
+});
+
+gpCarousel.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - gpCarousel.offsetLeft;
+    const walk = (x - startX) * 3; // Scroll speed
+    gpCarousel.scrollLeft = scrollLeft - walk;
+});

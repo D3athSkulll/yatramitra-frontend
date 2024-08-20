@@ -556,3 +556,67 @@ header {
     }
 }
 
+
+.gp-global-presence {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f8f9fa; /* Optional: Background color for the section */
+    padding: 20px 0; /* Optional: Padding for the section */
+}
+
+.gp-carousel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    /* Simple scroll animation */
+}
+
+.gp-carousel-item {
+    text-align: center;
+}
+
+.gp-carousel-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px; /* Optional: Rounded corners for the images */
+}
+
+.gp-carousel-item p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gp-carousel {
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+    
+    .gp-carousel-item img {
+        width: 70px;
+    }
+
+    .gp-carousel-item p {
+        font-size: 0.875rem;
+    }
+}
+#app-image{
+    margin-top: 30px;
+}
+
+.app-container{
+    max-width:1000px;
+}
+
+/* Animation for the carousel */
+
+
+
+#ads-section{
+    margin-top: 30px;
+}
+
+
