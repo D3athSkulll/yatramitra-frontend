@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             return;
         }
         loaderContainer.classList.remove("hidden");
-        fetch("http://localhost:3000/contact/post",{
+        fetch("https://yatramitra-backend.onrender.com/contact/post",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
