@@ -1,0 +1,10 @@
+/* src/components/SearchNavbar.css */
+.search-navbar {
+    position: sticky;
+    top: 60px; /* Adjust this based on the height of your existing navbar */
+    background-color: #333;
+    z-index: 999;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

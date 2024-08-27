@@ -1,0 +1,58 @@
+/* src/DatePickerStyles.css */
+.react-datepicker {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Header styling */
+.react-datepicker__header {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+/* Selected day styling */
+.react-datepicker__day--selected {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+/* Keyboard-selected day styling */
+.react-datepicker__day--keyboard-selected {
+  background-color: #64b5f6;
+  color: #fff;
+}
+
+/* Today's date styling */
+.react-datepicker__day--today {
+  background-color: #bbdefb;
+}
+
+/* Datepicker input styling */
+.react-datepicker__input-container input {
+  padding: 12px; /* Adjust padding to match text field */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Ensure the box sizing is consistent */
+  width: 100%; /* Ensure the input takes full width */
+  height: 56px; /* Match the height of MUI text fields */
+  font-size: 16px; /* Match the font size of MUI text fields */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+  .react-datepicker__input-container input {
+      padding: 10px; /* Adjust padding for smaller screens */
+      height: 48px; /* Reduce height for smaller screens */
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .react-datepicker__input-container input {
+      padding: 8px; /* Further adjust padding for very small screens */
+      height: 40px; /* Further reduce height for very small screens */
+      font-size: 12px; /* Further adjust font size for very small screens */
+  }
+}
