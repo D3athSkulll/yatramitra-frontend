@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense } from 'react';
 import Hero from './Hero';
 import Form  from './Form';
 import Ad from './Ad';

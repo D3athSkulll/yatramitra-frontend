@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState } from 'react';
 import { 
   Button, 
@@ -15,7 +13,8 @@ import {
   RadioGroup, 
   Select, 
   TextField, 
-  Typography 
+  Typography,
+  Autocomplete
 } from '@mui/material';
 import { 
   Flight as FlightIcon, 
@@ -88,6 +87,8 @@ export default function Component() {
     }
   };
 
+  const cities = ['New York', 'London', 'Paris', 'Berlin', 'Amsterdam', 'Brussels', 'Tokyo', 'Sydney', 'Mumbai', "Calcullta", 'AVAV', "ABSBAS", "ASB ASDA"]; // Replace with your list
+
   return (
     <Grid container spacing={3} maxWidth="md" margin="auto">
       <ToastContainer />
@@ -133,21 +134,35 @@ export default function Component() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField
-                    fullWidth
-                    label="Departure City"
+                  <Autocomplete
+                    freeSolo
+                    options={cities}
                     value={departureCity}
-                    onChange={(e) => setDepartureCity(e.target.value)}
-                    required
+                    onChange={(e, newValue) => setDepartureCity(newValue)}
+                    onInputChange={(e, newInputValue) => setDepartureCity(newInputValue)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Departure City"
+                        required
+                      />
+                    )}
                   />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField
-                    fullWidth
-                    label="Arrival City"
+                  <Autocomplete
+                    freeSolo
+                    options={cities}
                     value={arrivalCity}
-                    onChange={(e) => setArrivalCity(e.target.value)}
-                    required
+                    onChange={(e, newValue) => setArrivalCity(newValue)}
+                    onInputChange={(e, newInputValue) => setArrivalCity(newInputValue)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Arrival City"
+                        required
+                      />
+                    )}
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -203,7 +218,7 @@ export default function Component() {
           </CardContent>
         </Card>
       </Grid>
-
+  
       {showResults && (
         <Grid item xs={12}>
           <Card>
@@ -247,7 +262,7 @@ export default function Component() {
           </Card>
         </Grid>
       )}
-
+  
       {selectedResult && (
         <Grid item xs={12}>
           <Card>
@@ -268,4 +283,5 @@ export default function Component() {
       )}
     </Grid>
   );
+  
 }

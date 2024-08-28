@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import VideoPlayer from '../Component/VideoPlayer'; // Ensure the path is correct
-
+// Ensure the path is correct
+const VideoPlayer = lazy(() => import('../Component/VideoPlayer'));
 const HeroContainer = styled(Box)(({ theme }) => ({
   height: '90vh',
   display: 'flex',
@@ -40,9 +40,11 @@ const VideoBackground = styled(Box)({
 const Hero = () => {
   return (
     <HeroContainer>
+      <Suspense fallback={<p>Loading...</p>}>
       <VideoBackground>
         <VideoPlayer />
       </VideoBackground>
+      </Suspense>
       <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
         <Typography variant="h3" sx={{ fontWeight: 'bold', fontSize: { xs: '2rem', sm: '3rem' } }}>
           Welcome to Yatramitra
