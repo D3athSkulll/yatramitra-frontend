@@ -2,7 +2,7 @@ import React, {lazy, Suspense} from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // Ensure the path is correct
-const VideoPlayer = lazy(() => import('../Component/VideoPlayer'));
+const VideoPlayer = lazy(() => import('./videoPlayer'));
 const HeroContainer = styled(Box)(({ theme }) => ({
   height: '90vh',
   display: 'flex',
