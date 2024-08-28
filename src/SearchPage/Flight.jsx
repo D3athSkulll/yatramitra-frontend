@@ -91,7 +91,7 @@ export default function Component() {
   return (
     <Grid container spacing={3} maxWidth="md" margin="auto">
       <ToastContainer />
-      <Grid item xs={12}>
+      <Grid item xs={12} marginTop={12}>
         <Card>
           <CardHeader title="Search for Travel" />
           <CardContent>

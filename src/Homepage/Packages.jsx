@@ -92,10 +92,10 @@ const OverlayContent = styled(Box)(({ theme }) => ({
   position: 'relative',
   width: '90%',
   maxWidth: 1000,
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: "#ffff",
   padding: theme.spacing(4),
   borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.shadows[5],
+  // boxShadow: theme.shadows[5],
   pointerEvents: 'auto',
 }));
 
